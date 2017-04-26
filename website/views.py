@@ -6,3 +6,8 @@ from django.http import HttpResponse
 def homepage(request):
 	context = {}
 	return render(request, 'homepage.html', context)
+
+
+def adminlogin(request):
+	context = {}
+	return render(request, 'adminlogin.html', context)

@@ -1,0 +1,25 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block admin-login %}
+
+<div class="container">
+    <div class="row" style="padding: 30px 20px;">
+        <form class="form" id="admin-login" method="POST">
+        {% csrf_token %}
+            <div class="form-group">
+                <label for="">用户名：</label>
+                <input type="text" class="form-control" id="admin-name">
+            </div>
+            <div class="form-group">
+                <label for="">密码：</label>
+                <input type="text" class="form-control" id="admin-pwd">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">登  录</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
