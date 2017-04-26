@@ -5,6 +5,9 @@
 
 <div class="container">
     <div class="row" style="padding: 30px 20px;">
+    <div class="col-xs-2 cols-sm-3 col-md-4"></div>
+    <div class="col-xs-3 cols-sm-4 col-md-4">
+        <h3>管理员登录</h3>
         <form class="form" id="admin-login" method="POST">
         {% csrf_token %}
             <div class="form-group">
@@ -20,6 +23,9 @@
             </div>
         </form>
     </div>
+    <div class="col-xs-2 cols-sm-3 col-md-4"></div>
+    </div> <!-- row -->
+
 </div>
 
 {% endblock %}
