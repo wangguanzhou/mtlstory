@@ -18,7 +18,7 @@ def adminlogin(request):
 	if request.user.is_authenticated:
 		context['authenticated'] = True
 		context['heading'] = '管理员功能'
-		username = request.user.username
+		context['username'] = request.user.username
 		return render(request, 'adminlogin.html', context)
 	elif request.POST:
 		if 'login-btn' in request.POST:

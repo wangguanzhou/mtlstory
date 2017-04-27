@@ -12,6 +12,13 @@
         </div>
 
         {% if authenticated %}
+        <div class="alert alert-success">
+            您已经以管理员 <strong> {{ username }}</strong> 登录。
+        </div>
+        <a href="#"><h4>创建新的故事会通告</h4></a>
+        <a href="#"><h4>更改当前故事会通告</h4></a>
+        <a href="#"><h4>查看当前及历史报名信息</h4></a>
+        <a href="#"><h4>退出登录</h4></a>
 
         {% else %}
         {% if login_error %}
@@ -28,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label for="">密码：</label>
-                <input type="text" class="form-control" name="admin-pwd">
+                <input type="password" class="form-control" name="admin-pwd">
             </div>
             <div class="text-center">
                 <button type="submit" name="login-btn" class="btn btn-primary">登  录</button>
