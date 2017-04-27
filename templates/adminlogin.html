@@ -8,8 +8,18 @@
     <div class="col-xs-2 cols-sm-4 col-md-4"></div>
     <div class="col-xs-8 cols-sm-4 col-md-4">
         <div class="text-center">
-            <h3>管理员登录</h3>
+            <h3> {% heading %} </h3>
         </div>
+
+        {% if authenticated %}
+
+        {% else %}
+        {% if login_error %}
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> {% errmsg %}
+        </div>
+        {% endif %}
+
         <form class="form" id="admin-login" method="POST">
         {% csrf_token %}
             <div class="form-group">
@@ -21,9 +31,11 @@
                 <input type="text" class="form-control" id="admin-pwd">
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">登  录</button>
+                <button type="submit" id="login-btn" class="btn btn-primary">登  录</button>
             </div>
         </form>
+
+        {% endif %}
     </div>
     <div class="col-xs-2 cols-sm-4 col-md-4"></div>
     </div> <!-- row -->
