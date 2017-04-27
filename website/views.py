@@ -45,3 +45,8 @@ def adminlogin(request):
 		context['authenticated'] = False
 		context['heading'] = '管理员登录'
 		return render(request, 'adminlogin.html', context)
+
+
+def adminlogout(request):
+    logout(request)
+    return redirect('/mtlstory/admin/')
