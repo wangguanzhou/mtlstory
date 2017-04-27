@@ -29,12 +29,13 @@ def adminlogin(request):
 				context['authenticated'] = True
 				context['heading'] = '管理员功能'
 				context['username'] = request.user.username
-				return render(requeset, 'adminlogin.html', context)
+				return render(request, 'adminlogin.html', context)
 			else: 
 				context['authenticated'] = False
 				context['heading'] = '管理员登录'
+				context['login_error'] = True
 				context['errmsg'] = ErrMsgs['admin-login-error']
-				return render(requeset, 'adminlogin.html', context)
+				return render(request, 'adminlogin.html', context)
 	else:
 		context['authenticated'] = False
 		context['heading'] = '管理员登录'
