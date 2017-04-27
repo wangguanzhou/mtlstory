@@ -24,11 +24,11 @@
         {% csrf_token %}
             <div class="form-group">
                 <label for="">用户名：</label>
-                <input type="text" class="form-control" id="admin-name">
+                <input type="text" class="form-control" name="admin-name">
             </div>
             <div class="form-group">
                 <label for="">密码：</label>
-                <input type="text" class="form-control" id="admin-pwd">
+                <input type="text" class="form-control" name="admin-pwd">
             </div>
             <div class="text-center">
                 <button type="submit" name="login-btn" class="btn btn-primary">登  录</button>
