@@ -5,16 +5,20 @@
 
 <div class="container">
     <div class="row" style="padding: 30px 20px;">
-    <div class="text-center">
-        <h3> {{ heading }} </h3>
-    </div>
+    <div class="col-xs-0 cols-sm-2 col-md-3"></div>
+    <div class="col-xs-12 cols-sm-10 col-md-6">
+        <div class="text-center">
+            <h3> {{ heading }} </h3>
+        </div>
 
-    {% if authenticated %}
-    <div class="alert alert-success">
-        您已经以管理员 <strong> {{ username }}</strong> 登录。
-    </div>
+        {% if authenticated %}
+        <div class="alert alert-success">
+            您已经以管理员 <strong> {{ username }}</strong> 登录。
+        </div>
 
-   {% endif %} 
+        {% endif %} 
+    </div>
+    <div class="col-xs-0 cols-sm-2 col-md-3"></div>
     </div> <!-- row -->
 </div> <!-- container -->  
 
