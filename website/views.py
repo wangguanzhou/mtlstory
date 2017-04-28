@@ -10,6 +10,13 @@ ErrMsgs = {
 	'admin-login-error': '用户名或者密码错误，请重新尝试登录。',
 }
 
+DistrictNames = {
+	'bsdadmin': 'Brossard',
+	'logadmin': 'Longueuil',
+	'mtladmin': 'Montreal',
+	'cdnadmin': 'CDN',
+}
+
 def homepage(request):
 	context = {}
 	return render(request, 'homepage.html', context)
@@ -64,7 +71,9 @@ def createnotice(request):
 		return render(request, 'adminlogin.html', context)
 	else: 
 		username = request.user.username
-		district = district_name[username]
+		district = DistrictNames[username]
+		context['authenticated'] = True
+		context['username'] = username
 		context['district_name'] = district
 		context['heading'] = '管理员功能 - 创建新故事会通知'
 		return render(request, 'createnotice.html', context)
