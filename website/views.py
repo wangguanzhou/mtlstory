@@ -64,11 +64,7 @@ def adminlogout(request):
 def createnotice(request):
 	context = {}
 	if not request.user.is_authenticated:
-		context['authenticated'] = False
-		context['heading'] = '管理员登录'
-		context['login_error'] = True
-		context['errmsg'] = ErrMsgs['admin-not-logged-in']
-		return render(request, 'adminlogin.html', context)
+		return redirect('/mtlstory/admin/')
 	else: 
 		username = request.user.username
 		district = DistrictNames[username]
