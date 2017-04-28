@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 # Create your views here.
 
 ErrMsgs = {
+	'admin-not-logged-in': '您尚未登录。请先以管理员身份登录。',
 	'admin-login-error': '用户名或者密码错误，请重新尝试登录。',
 }
 
@@ -51,3 +52,19 @@ def adminlogin(request):
 def adminlogout(request):
     logout(request)
     return redirect('/mtlstory/admin/')
+
+
+def createnotice(request):
+	context = {}
+	if not request.user.is_authenticated:
+		context['authenticated'] = False
+		context['heading'] = '管理员登录'
+		context['login_error'] = True
+		context['errmsg'] = ErrMsgs['admin-not-logged-in']
+		return render(request, 'adminlogin.html', context)
+	else: 
+		username = request.user.username
+		district = district_name[username]
+		context['district_name'] = district
+		context['heading'] = '管理员功能 - 创建新故事会通知'
+		return render(request, 'createnotice.html', context)

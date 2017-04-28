@@ -1,0 +1,20 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block create-notice %}
+
+<div class="container">
+    <div class="row" style="padding: 30px 20px;">
+    <div class="text-center">
+        <h3> {{ heading }} </h3>
+    </div>
+
+    {% if authenticated %}
+    <div class="alert alert-success">
+        您已经以管理员 <strong> {{ username }}</strong> 登录。
+    </div>
+    
+    </div> <!-- row -->
+</div> <!-- container -->  
+
+{% endblock %}
