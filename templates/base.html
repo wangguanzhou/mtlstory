@@ -11,18 +11,22 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Questrial|Julius+Sans+One" rel="stylesheet">
     <link href="{% static 'css/bootstrap-datepicker.standalone.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-timeicker.standalone.css' %}" rel="stylesheet">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-timepicker.min.js' %}"></script>
     <script type="text/javascript">
       $(document).ready(function () {
           $('#story-datepicker').datepicker({
               format: "yyyy-mm-dd DD",
               todayHighlight: true
           });
+          
+          $('#story-timepicker').datepicker();
 
           $("#reserveBtn").click( function(event) {
               event.preventDefault();
