@@ -19,12 +19,10 @@
     <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
     <script type="text/javascript">
       $(document).ready(function () {
-          $('#checkin-datepicker').datepicker({
+          $('#story-datepicker').datepicker({
               format: "dd/mm/yyyy"
           });
-          $('#checkout-datepicker').datepicker({
-              format: "dd/mm/yyyy"
-          });
+
           $("#reserveBtn").click( function(event) {
               event.preventDefault();
               var reserveData = $("#reserveForm-1, #reserveForm-2").serialize();

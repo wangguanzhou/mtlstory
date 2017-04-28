@@ -15,6 +15,25 @@
         <div class="alert alert-success">
             您已经以管理员 <strong> {{ username }}</strong> 登录。
         </div>
+        <form class="form" method="POST" id="create-notice-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="">故事会主题：</label>
+                <input type="text" class="form-control" name="story-theme">
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <div class="form-group">
+                    <label for="">故事会日期：</label>
+                    <input type="text" class="form-control" name="story-date" id="story-datepicker">
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <div class="form-group">
+                    <label for="">故事会时间：</label>
+                    <input type="text" class="form-control" name="story-time">
+                </div>
+            </div>
+        </form>
 
         {% endif %} 
     </div>
