@@ -33,27 +33,11 @@
           $('#story-timepicker').timepicker();
           $('#register-timepicker').timepicker();
 
-          $("#reserveBtn").click( function(event) {
-              event.preventDefault();
-              var reserveData = $("#reserveForm-1, #reserveForm-2").serialize();
-              console.log(reserveData);
-              $.ajax({
-                  url: '/',
-                  type: 'POST',
-                  data: reserveData,
-                  
-                  success: function (content) {
-                    $("#reserveModal").hide();
-                    $("html").html(content)
-                  },
-                  error: function(){
-                      alert("error in ajax form submission");
-                  }
-              });
-
-              return false;
-          });
       });
+
+      $(document).on('change', '.browse', function() {
+        $(this).parent().parent().parent().find('.form-control').val($(this).val());
+      })
     </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -103,6 +87,10 @@
         background: white;
         cursor: inherit;
         display: block;
+    }
+
+    .browse {
+      
     }
 
   </style>
