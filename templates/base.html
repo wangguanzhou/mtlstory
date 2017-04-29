@@ -25,8 +25,13 @@
               format: "yyyy-mm-dd DD",
               todayHighlight: true
           });
-          
+          $('#register-datepicker').datepicker({
+              format: "yyyy-mm-dd DD",
+              todayHighlight: true
+          });
+
           $('#story-timepicker').timepicker();
+          $('#register-timepicker').timepicker();
 
           $("#reserveBtn").click( function(event) {
               event.preventDefault();
