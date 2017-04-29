@@ -94,7 +94,7 @@ def set_default_notice(district):
 
 	default_notice = {}
 	default_notice['story_maxsize'] = '20' 
-	default_notice['story_site'] = 'Bibliotheque de Brossard'
+	default_notice['story_site'] = places[district]
 	default_notice['story_address'] = addresses[district]
 
 	return default_notice
