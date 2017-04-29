@@ -91,9 +91,10 @@ def set_default_notice(district):
         'CDN': '5290 Chemin de la Côté-des-Neiges, Montréal H3T 1Y3',
         'Montreal': '5290 Chemin de la Côté-des-Neiges, Montréal H3T 1Y3',
     }
-
-    default_notice = {}
-	default_notice['story_maxsize'] = '20'
+	default_notice = {}
+	default_notice['story_maxsize'] = '20' 
 	default_notice['story_site'] = places[district]
 	default_notice['story_address'] = addresses[district]
+
+	return default_notice
 
