@@ -79,18 +79,19 @@ def createnotice(request):
 
 
 def set_default_notice(district):
-    places = {
-        'Brossard': 'Bibliothèque de Brossard (Brossard图书馆儿童活动区)',
-        'Longueuil': 'Bibliothèque Georges-Dor',
-        'CDN': 'CDN图书馆儿童活动室（地下一层）',
-        'Montreal': 'Montreal library'
-    }
-    addresses = {
-        'Brossard': '7855 Ave San Francisco, Brossard J4X 2A4',
-        'Longueuil': '2760 chemin de Chambly, Longueuil J4L 1M6',
-        'CDN': '5290 Chemin de la Côté-des-Neiges, Montréal H3T 1Y3',
-        'Montreal': '5290 Chemin de la Côté-des-Neiges, Montréal H3T 1Y3',
-    }
+	places = {
+		'Brossard': 'Bibliothèque de Brossard (Brossard图书馆儿童活动区)',
+		'Longueuil': 'Bibliothèque Georges-Dor',
+		'CDN': 'CDN图书馆儿童活动室（地下一层）',
+		'Montreal': 'Montreal library'
+	}
+	addresses = {
+		'Brossard': '7855 Ave San Francisco, Brossard J4X 2A4',
+		'Longueuil': '2760 chemin de Chambly, Longueuil J4L 1M6',
+		'CDN': '5290 Chemin de la Côté-des-Neiges, Montréal H3T 1Y3',
+		'Montreal': '5290 Chemin de la Côté-des-Neiges, Montréal H3T 1Y3',
+	}
+	
 	default_notice = {}
 	default_notice['story_maxsize'] = '20' 
 	default_notice['story_site'] = places[district]
