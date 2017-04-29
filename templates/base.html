@@ -36,7 +36,7 @@
       });
 
       $(document).on('change', '.browse', function() {
-        $(this).parent().parent().parent().find('.form-control').val($(this).val());
+        $(this).parent().parent().parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
       })
     </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
