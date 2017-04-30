@@ -71,7 +71,7 @@ def createnotice(request):
 		return redirect('/mtlstory/admin/')
 	elif request.POST:
 		if 'publish-notice' in request.POST:
-			if request.FILES['activity-1-img']
+			if request.FILES['activity-1-img']:
 				imgfile = request.FILES['activity-1-img']
 				filename = 'activity-1'
 				imgurl = upload_activity_img(filename, imgfile)
