@@ -69,6 +69,12 @@ def createnotice(request):
 	context = {}
 	if not request.user.is_authenticated:
 		return redirect('/mtlstory/admin/')
+	elif request.POST:
+		if 'publish-notice' in request.POST:
+			return render(request, 'homepage.html', context)
+		else:
+			return render(request, 'adminlogin.html', context)
+
 	else: 
 		username = request.user.username
 		district = DistrictNames[username]
