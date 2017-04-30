@@ -2,6 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
+from django.core.files.storage import FileSystemStorage
+import os.path
+from datetime import datetime
+import json
 
 # Create your views here.
 
@@ -99,3 +103,8 @@ def set_default_notice(district):
 
 	return default_notice
 
+def upload_activity_img(filename, imgfile):
+    fs = FileSystemStorage()
+    ext = os.path.splitext(imgfile.name)[1]
+    fname = fs.save(filename+ext, imgfile)
+    return fs.url(fname)
