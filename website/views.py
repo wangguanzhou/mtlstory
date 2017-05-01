@@ -91,7 +91,7 @@ def createnotice(request):
 
 			if validate_notice_data(notice_data)['err_num'] == 0:
 				for activity_no in range(1):
-					activity_name = 'activity-' + activity_no
+					activity_name = 'activity-' + str(activity_no + 1)
 					activity_info = request.POST[activity_name + '-info']
 					if len(activity_info) > 0:
 						this_activity['activity-name'] = activity_name;
