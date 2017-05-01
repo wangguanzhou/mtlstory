@@ -71,13 +71,38 @@ def createnotice(request):
 		return redirect('/mtlstory/admin/')
 	elif request.POST:
 		if 'publish-notice' in request.POST:
-			if request.FILES['activity-1-img']:
-				imgfile = request.FILES['activity-1-img']
-				filename = 'activity-1'
-				imgurl = upload_activity_img(filename, imgfile)
-				return render(request, 'homepage.html', context)
-			else:	
-				return render(request, 'homepage.html', context)
+			notice_data = {}
+			notice_data['story-theme'] = request.POST['story-theme']
+			notice_data['story-date'] = request.POST['story-date']
+			notice_data['story-time'] = request.POST['story-time']
+			notice_data['story-host'] = request.POST['story-host']
+			notice_data['story-maxsize'] = request.POST['story-maxsize']
+			notice_data['story-site'] = request.POST['story-site']
+			notice_data['story-address'] = request.POST['story-address']
+			notice_data['register-date'] = request.POST['register-date']
+			notice_data['register-time'] = request.POST['register-time']
+			notice_data['activity-list'] = []
+
+			if validate_notice_data(notice_data).err_num == 0:
+				for activity_no in range(1):
+					activity_name = 'activity-' + activity_no
+					activity_info = request.POST[activity_name + '-info']
+					if(len(activity_info) > 0)：
+						this_activity['activity-name'] = activity_name;
+						this_activity['activity-info'] = activity_info;
+						if (activity_name + '-img') in request.FILES:
+							try:
+								activity_imgfile = request.FILES[activity_name + '-img']
+								activity_filename = request.POST['story-date'][:10] + '-' + activity_name
+								this_activity['activity-img-url'] = upload_activity_img(filename, imgfile)
+							except:
+								this_activity['activity-img-url'] = ''
+						else:
+								this_activity['activity-img-url'] = ''
+
+						notice_data['actility-list'].append(this_activity)
+
+
 		else:
 			return render(request, 'adminlogin.html', context)
 
