@@ -156,6 +156,7 @@ def validate_notice_data(notice_data):
 	err_msgs = []
 
 	story_date = notice_data['story-date']
+	story_date_err = False
 	if len(story_date) < 10:
 		story_date_err = True
 	else:
