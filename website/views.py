@@ -70,6 +70,12 @@ def createnotice(request):
 	if not request.user.is_authenticated:
 		return redirect('/mtlstory/admin/')
 	elif request.POST:
+		username = request.user.username
+		district = DistrictNames[username]
+		context['authenticated'] = True
+		context['username'] = username
+		context['district_name'] = district
+
 		if 'publish-notice' in request.POST:
 			notice_data = {}
 			notice_data['story-theme'] = request.POST['story-theme']
@@ -87,7 +93,7 @@ def createnotice(request):
 				for activity_no in range(1):
 					activity_name = 'activity-' + activity_no
 					activity_info = request.POST[activity_name + '-info']
-					if(len(activity_info) > 0)：
+					if len(activity_info) > 0:
 						this_activity['activity-name'] = activity_name;
 						this_activity['activity-info'] = activity_info;
 						if (activity_name + '-img') in request.FILES:
@@ -101,6 +107,9 @@ def createnotice(request):
 								this_activity['activity-img-url'] = ''
 
 						notice_data['actility-list'].append(this_activity)
+
+				return(request, 'createnotice_success.html', context)
+			else:
 
 
 		else:
@@ -139,6 +148,29 @@ def set_default_notice(district):
 	default_notice['story_address'] = addresses[district]
 
 	return default_notice
+
+def validate_notice_data(notice_data):
+	# check story-date
+	result = {}
+	err_num = 0
+	err_msgs = []
+
+	story_date = notice_data['story-date']
+	if(len(story_date) < 10)
+		story_date_err = True
+	else:
+		try:
+			datetime.strptime(story_date[:10], '%Y-%m-%d')
+		except:
+			story_date_err = True
+    if(story_date_err)
+		err_num ++
+		err_msgs.append('故事会活动日期格式错误。')
+
+	result['err_num'] = err_num
+	result['err_msgs'] = err_msgs
+	return result
+
 
 def upload_activity_img(filename, imgfile):
     fs = FileSystemStorage()
