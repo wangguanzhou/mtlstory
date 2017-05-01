@@ -89,7 +89,7 @@ def createnotice(request):
 			notice_data['register-time'] = request.POST['register-time']
 			notice_data['activity-list'] = []
 
-			if validate_notice_data(notice_data).err_num == 0:
+			if validate_notice_data(notice_data)['err_num'] == 0:
 				for activity_no in range(1):
 					activity_name = 'activity-' + activity_no
 					activity_info = request.POST[activity_name + '-info']
