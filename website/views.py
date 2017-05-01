@@ -110,7 +110,7 @@ def createnotice(request):
 
 				return(request, 'createnotice_success.html', context)
 			else:
-
+				return render(request, 'adminlogin.html', context)
 
 		else:
 			return render(request, 'adminlogin.html', context)
