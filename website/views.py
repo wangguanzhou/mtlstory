@@ -164,9 +164,9 @@ def validate_notice_data(notice_data):
 			datetime.strptime(story_date[:10], '%Y-%m-%d')
 		except:
 			story_date_err = True
-
-    if story_date_err:
-		err_num ++
+			
+	if story_date_err:
+		err_num = err_num + 1
 		err_msgs.append('故事会活动日期格式错误。')
 
 	result['err_num'] = err_num
