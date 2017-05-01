@@ -108,7 +108,7 @@ def createnotice(request):
 
 						notice_data['actility-list'].append(this_activity)
 
-				return(request, 'createnotice_success.html', context)
+				return render(request, 'createnotice_success.html', context)
 			else:
 				return render(request, 'adminlogin.html', context)
 
