@@ -23,6 +23,6 @@ urlpatterns = [
 	url(r'^$', views.homepage),
     url(r'^mtlstory/admin/', views.adminlogin),
     url(r'^mtlstory/logout/', views.adminlogout),
-    url(r'^mtlstory/createnotice/', views.createnotice),
+    url(r'^mtlstory/createnotice/', views.createnotice, name="createNotice"),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
