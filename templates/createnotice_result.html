@@ -1,0 +1,35 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block create-notice-success %}
+
+<div class="container" style="padding: 20px;">
+    <div class="row" style="padding: 10px 0px;">
+        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+        <div class="col-xs-12 cols-sm-8 col-md-8">
+            <a href="/mtlstory/admin/" <h4>管理员功能 >></h4></a>
+        </div>
+        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+    </div>
+    <div class="row" style="padding: 10px 0px;">
+        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+        <div class="col-xs-12 cols-sm-8 col-md-8">
+            {% if succeeded %}
+            <div class="alert alert-success">
+                您已经成功创建 <strong>[ {{ district_name }} ]</strong> 地区 <strong>{{ story-date }}</strong> 故事会通知。
+            </div>
+
+            {% else %}
+            <div class="alert alert-warning">
+                您创建的<strong>[ {{ district_name }} ]</strong> 地区 <strong>{{ story-date }}</strong> 故事会通知中有如下错误，请重新修改。
+                
+            </div>
+
+            {% endif %}
+
+        </div>
+        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+    </div>
+    </div> <!-- container -->
+
+{% endblock %}
