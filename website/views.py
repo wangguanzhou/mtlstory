@@ -78,35 +78,35 @@ def createnotice(request):
 
 		if 'publish-notice' in request.POST:
 			notice_data = {}
-			notice_data['story-theme'] = request.POST['story-theme']
-			notice_data['story-date'] = request.POST['story-date']
-			notice_data['story-time'] = request.POST['story-time']
-			notice_data['story-host'] = request.POST['story-host']
-			notice_data['story-maxsize'] = request.POST['story-maxsize']
-			notice_data['story-site'] = request.POST['story-site']
-			notice_data['story-address'] = request.POST['story-address']
-			notice_data['register-date'] = request.POST['register-date']
-			notice_data['register-time'] = request.POST['register-time']
-			notice_data['activity-list'] = []
+			notice_data['story_theme'] = request.POST['story-theme']
+			notice_data['story_date'] = request.POST['story-date']
+			notice_data['story_time'] = request.POST['story-time']
+			notice_data['story_host'] = request.POST['story-host']
+			notice_data['story_maxsize'] = request.POST['story-maxsize']
+			notice_data['story_site'] = request.POST['story-site']
+			notice_data['story_address'] = request.POST['story-address']
+			notice_data['register_date'] = request.POST['register-date']
+			notice_data['register_time'] = request.POST['register-time']
+			notice_data['activity_list'] = []
 
 			if validate_notice_data(notice_data)['err_num'] == 0:
 				for activity_no in range(1):
 					activity_name = 'activity-' + str(activity_no + 1)
 					activity_info = request.POST[activity_name + '-info']
 					if len(activity_info) > 0:
-						this_activity['activity-name'] = activity_name;
-						this_activity['activity-info'] = activity_info;
+						this_activity['activity_name'] = activity_name;
+						this_activity['activity_info'] = activity_info;
 						if (activity_name + '-img') in request.FILES:
 							try:
 								activity_imgfile = request.FILES[activity_name + '-img']
 								activity_filename = request.POST['story-date'][:10] + '-' + activity_name
-								this_activity['activity-img-url'] = upload_activity_img(filename, imgfile)
+								this_activity['activity_img_url'] = upload_activity_img(filename, imgfile)
 							except:
-								this_activity['activity-img-url'] = ''
+								this_activity['activity_img_url'] = ''
 						else:
-								this_activity['activity-img-url'] = ''
+								this_activity['activity_img_url'] = ''
 
-						notice_data['actility-list'].append(this_activity)
+						notice_data['actility_list'].append(this_activity)
 
 				context.update(notice_data)
 				context['succeeded'] = True
