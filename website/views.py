@@ -224,7 +224,7 @@ def create_random_chars(size):
 	return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(size))
 
 
-def save_notice_file(filename, json_data)
+def save_notice_file(filename, json_data):
 	try:
 		with open(Noticefile_Path + filename, 'w') as json_file:
 			json.dump(json_data, json_file)
