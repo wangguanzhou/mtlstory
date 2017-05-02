@@ -5,6 +5,8 @@ from django.shortcuts import redirect
 from django.core.files.storage import FileSystemStorage
 import os.path
 from datetime import datetime
+import string
+import random
 import json
 
 # Create your views here.
@@ -71,6 +73,7 @@ def createnotice(request):
 		return redirect('/mtlstory/admin/')
 	elif request.GET:
 		if 'tempid' in request.GET:
+
 			return render(request, 'adminlogin.html', context)
 		else:
 			return render(request, 'homepage.html', context)
@@ -122,7 +125,9 @@ def createnotice(request):
 			else:
 				context['notice_data'] = notice_data
 				context['err_msgs'] = validate_result['err_msgs']
+				context['temp_id'] = district + '_' + create_random_chars(5)
 				context['succeeded'] = False
+
 				return render(request, 'createnotice_result.html', context)
 
 		else:
@@ -208,3 +213,6 @@ def upload_activity_img(filename, imgfile):
     ext = os.path.splitext(imgfile.name)[1]
     fname = fs.save(filename+ext, imgfile)
     return fs.url(fname)
+
+def create_random_chars(size):
+	return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(size))
