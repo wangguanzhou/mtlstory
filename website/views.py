@@ -128,10 +128,7 @@ def createnotice(request):
 		context['username'] = username
 		context['district_name'] = district
 		context['heading'] = '创建新故事会通知'
-		if existed_notice_data == None:
-			notice_data = set_default_notice(district)
-		else:
-			notice_data = existed_notice_data	
+		notice_data = set_default_notice(district)
 		context.update(notice_data)
 		return render(request, 'createnotice.html', context)
 
