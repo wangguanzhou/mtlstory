@@ -89,7 +89,8 @@ def createnotice(request):
 			notice_data['register_time'] = request.POST['register-time']
 			notice_data['activity_list'] = []
 
-			if validate_notice_data(notice_data)['err_num'] == 0:
+			validate_result = validate_notice_data(notice_data)
+			if validate_result['err_num'] == 0:
 				for activity_no in range(1):
 					activity_name = 'activity-' + str(activity_no + 1)
 					activity_info = request.POST[activity_name + '-info']
@@ -112,6 +113,8 @@ def createnotice(request):
 				context['succeeded'] = True
 				return render(request, 'createnotice_result.html', context)
 			else:
+				context.update(notice_data)
+				context['err_msgs'] = validate_result['err_msgs']
 				context['succeeded'] = False
 				return render(request, 'createnotice_result.html', context)
 
@@ -170,7 +173,23 @@ def validate_notice_data(notice_data):
 			
 	if story_date_err:
 		err_num = err_num + 1
-		err_msgs.append('故事会活动日期格式错误。')
+		err_msgs.append('故事会活动日期缺失或者格式错误。')
+
+	register_date = notice_data['register_date']
+	register_date_err = False
+	if len(register_date) < 10:
+		register_date_err = True
+	else:
+		try:
+			datetime.strptime(register_date[:10], '%Y-%m-%d')
+		except:
+			register_date_err = True
+			
+	if register_date_err:
+		err_num = err_num + 1
+		err_msgs.append('报名启动日期缺失或者格式错误。')
+
+
 
 	result['err_num'] = err_num
 	result['err_msgs'] = err_msgs

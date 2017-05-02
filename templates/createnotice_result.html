@@ -21,7 +21,12 @@
 
             {% else %}
             <div class="alert alert-warning">
-                您创建的<strong>[ {{ district_name }} ]</strong> 地区 <strong>{{ story_date }}</strong> 故事会通知中有如下错误，请重新修改。
+                <p>您创建的<strong>[ {{ district_name }} ]</strong> 地区 <strong>{{ story_date }}</strong> 故事会通知中有如下错误，请重新修改。</p>
+                <ol>
+                    {% for err_msg in err_msgs %}
+                    <li> {{ err_msg }} </li>
+                </ol>
+
 
             </div>
 
