@@ -11,6 +11,7 @@ import json
 
 # Create your views here.
 
+Noticefile_Path = '/opt/webapps/mtlstory/mtlstory/noticefiles/'
 ErrMsgs = {
 	'admin-not-logged-in': '您尚未登录。请先以管理员身份登录。',
 	'admin-login-error': '用户名或者密码错误，请重新尝试登录。',
@@ -125,8 +126,13 @@ def createnotice(request):
 			else:
 				context['notice_data'] = notice_data
 				context['err_msgs'] = validate_result['err_msgs']
-				context['temp_id'] = district + '_' + create_random_chars(5)
+				temp_id = district + '_' + create_random_chars(8)
+				context['temp_id'] = temp_id
 				context['succeeded'] = False
+				json_data['district'] = district
+				json_data['notice_data'] = notice_data
+				json_filename = temp_id
+				save_notice_file(json_filename, json_data)
 
 				return render(request, 'createnotice_result.html', context)
 
@@ -216,3 +222,11 @@ def upload_activity_img(filename, imgfile):
 
 def create_random_chars(size):
 	return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(size))
+
+
+def save_notice_file(filename, json_data)
+	try:
+		with open(Noticefile_Path + filename, 'w') as json_file:
+			json.dump(json_data, json_file)
+	except:
+		print('Error writing JSON file.')
