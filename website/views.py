@@ -65,7 +65,7 @@ def adminlogout(request):
     return redirect('/mtlstory/admin/')
 
 
-def createnotice(request, existed_notice_data):
+def createnotice(request):
 	context = {}
 	if not request.user.is_authenticated:
 		return redirect('/mtlstory/admin/')
