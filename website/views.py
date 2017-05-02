@@ -70,6 +70,7 @@ def adminlogout(request):
 
 def createnotice(request):
 	context = {}
+	json_data = {}
 	if not request.user.is_authenticated:
 		return redirect('/mtlstory/admin/')
 	elif request.GET:
