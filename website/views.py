@@ -74,9 +74,21 @@ def createnotice(request):
 	if not request.user.is_authenticated:
 		return redirect('/mtlstory/admin/')
 	elif request.GET:
-		if 'tempid' in request.GET:
+		username = request.user.username
+		district = DistrictNames[username]
+		context['authenticated'] = True
+		context['username'] = username
+		context['district_name'] = district
 
-			return render(request, 'adminlogin.html', context)
+		if 'tempid' in request.GET:
+			temp_id = request.GET['tempid']
+			if os.path.isfile(Noticefile_Path + temp_id)
+				json_data = read_notice_file(temp_id)
+				notice_data = json_data['notice_data']
+			else:
+				notice_data = set_default_notice(district) 
+			context.update(notice_data)
+			return render(request, 'createnotice.html', context)
 		else:
 			return render(request, 'homepage.html', context)
 
@@ -229,5 +241,16 @@ def save_notice_file(filename, json_data):
 	try:
 		with open(Noticefile_Path + filename, 'w') as json_file:
 			json.dump(json_data, json_file)
+			json_file.close()
 	except:
 		print('Error writing JSON file.')
+
+def read_notice_file(filename):
+	try:
+		with open(Noticefile_Path + filename, 'r') as json_file:
+			json_data = json.load(json_file)
+			json_file.close()
+			return json_data
+	except:
+		print('Error reading JSON file.')
+
