@@ -65,7 +65,7 @@ def adminlogout(request):
     return redirect('/mtlstory/admin/')
 
 
-def createnotice(request):
+def createnotice(request, existed_notice_data=None):
 	context = {}
 	if not request.user.is_authenticated:
 		return redirect('/mtlstory/admin/')
@@ -109,11 +109,11 @@ def createnotice(request):
 
 						notice_data['actility_list'].append(this_activity)
 
-				context.update(notice_data)
+				context['notice_data'] = notice_data
 				context['succeeded'] = True
 				return render(request, 'createnotice_result.html', context)
 			else:
-				context.update(notice_data)
+				context.['notice_data'] = notice_data
 				context['err_msgs'] = validate_result['err_msgs']
 				context['succeeded'] = False
 				return render(request, 'createnotice_result.html', context)
@@ -128,8 +128,11 @@ def createnotice(request):
 		context['username'] = username
 		context['district_name'] = district
 		context['heading'] = '创建新故事会通知'
-		default_notice = set_default_notice(district)
-		context.update(default_notice)
+		if existed_notice_data == None:
+			notice_data = set_default_notice(district)
+		else:
+			notice_data = existed_notice_data	
+		context.update(notice_data)
 		return render(request, 'createnotice.html', context)
 
 
