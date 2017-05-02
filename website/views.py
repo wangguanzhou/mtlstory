@@ -113,7 +113,7 @@ def createnotice(request, existed_notice_data=None):
 				context['succeeded'] = True
 				return render(request, 'createnotice_result.html', context)
 			else:
-				context.['notice_data'] = notice_data
+				context['notice_data'] = notice_data
 				context['err_msgs'] = validate_result['err_msgs']
 				context['succeeded'] = False
 				return render(request, 'createnotice_result.html', context)
