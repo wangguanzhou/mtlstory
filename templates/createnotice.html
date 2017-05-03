@@ -28,55 +28,55 @@
             <div class="col-xs-12 col-sm-12">
                 <div class="form-group">
                     <label for="">故事会主题：</label>
-                    <input type="text" class="form-control" name="story-theme" value="{{ notice_data.story_theme }}">
+                    <input type="text" class="form-control" name="story_theme" value="{{ notice_data.story_theme }}">
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6">
                 <div class="form-group">
                     <label for="">故事会日期：</label>
-                    <input type="text" class="form-control" name="story-date" id="story-datepicker" value="{{ notice_data.story_date }}">
+                    <input type="text" class="form-control" name="story_date" id="story-datepicker" value="{{ notice_data.story_date }}">
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6">
                 <div class="form-group">
                     <label for="">故事会时间：</label>
-                    <input type="text" class="form-control" name="story-time" id="story-timepicker" value="{{ notice_data.story_time }}">
+                    <input type="text" class="form-control" name="story_time" id="story-timepicker" value="{{ notice_data.story_time }}">
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6">
                 <div class="form-group">
                     <label for="">主持人：</label>
-                    <input type="text" class="form-control" name="story-host" value="{{ notice_data.story_host }}">
+                    <input type="text" class="form-control" name="story_host" value="{{ notice_data.story_host }}">
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6">
                 <div class="form-group">
                     <label for="">最大参与人数：</label>
-                    <input type="text" class="form-control" name="story-maxsize" value="{{ notice_data.story_maxsize }}">
+                    <input type="text" class="form-control" name="story_maxsize" value="{{ notice_data.story_maxsize }}">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12">
                 <div class="form-group">
                     <label for="">故事会地点：</label>
-                    <input type="text" class="form-control" name="story-site" value="{{ notice_data.story_site }}">
+                    <input type="text" class="form-control" name="story_site" value="{{ notice_data.story_site }}">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12">
                 <div class="form-group">
                     <label for="">详细地址：</label>
-                    <input type="text" class="form-control" name="story-address" value="{{ notice_data.story_address }}">
+                    <input type="text" class="form-control" name="story_address" value="{{ notice_data.story_address }}">
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6">
                 <div class="form-group">
                     <label for="">报名启动日期：</label>
-                    <input type="text" class="form-control" name="register-date" id="register-datepicker" value="{{ notice_data.register_date }}">
+                    <input type="text" class="form-control" name="register_date" id="register-datepicker" value="{{ notice_data.register_date }}">
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6">
                 <div class="form-group">
                     <label for="">报名启动时间：</label>
-                    <input type="text" class="form-control" name="register-time" id="register-timepicker" value="{{ notice_data.register_time }}">
+                    <input type="text" class="form-control" name="register_time" id="register-timepicker" value="{{ notice_data.register_time }}">
                 </div>
             </div>
 
@@ -84,13 +84,13 @@
             <div class="col-xs-12 col-sm-12">
                 <div class="form-group">
                     <label for="">故事会活动内容 {{ activity_name }}：</label>
-                    <textarea class="form-control" name="{{ activity_name }}-info" rows="3" placeholder="{{ activity_info }}"></textarea>
+                    <textarea class="form-control" name="{{ activity_name }}_info" rows="3" placeholder="{{ activity_info }}"></textarea>
                 </div>
             </div>
             <div class="row" style="padding: 15px;">
                 <div class="col-xs-5 col-sm-4 col-md-3">
                 <label class="btn btn-default btn-file"><i class="glyphicon glyphicon-search"></i>
-                    选择图片<input type="file" class="browse" name="{{ activity_name }}-img">
+                    选择图片<input type="file" class="browse" name="{{ activity_name }}_img">
                 </label>
                 </div>
                 <div class="col-xs-7 col-sm-8 col-md-9">
