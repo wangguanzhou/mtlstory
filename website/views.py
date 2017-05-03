@@ -179,16 +179,17 @@ def createnotice(request):
 
 def get_active_notice():
 	active_notice_list = []
-	for dirpath, dirname, filename in os.walk(Noticefile_Path, topdown=True):
-		if os.path.splitext(os.path.join(dirpath, filename))[1] == '.json':
-			try:
-				json_data = read_notice_file(filename)
-				if json_data['published']:
-					district = json_data['district']
-					story_date = json_data['notice_data']['story_date']
-					active_notice_list.append((district, story_date))
-			except:
-				print('Error reading notice file')
+	for dirpath, dirnames, filenames in os.walk(Noticefile_Path, topdown=True):
+		for file in filenames:
+			if os.path.splitext(filename)[1] == '.json':
+				try:
+					json_data = read_notice_file(filename)
+					if json_data['published']:
+						district = json_data['district']
+						story_date = json_data['notice_data']['story_date']
+						active_notice_list.append((district, story_date))
+				except:
+					print('Error reading notice file')
 	return active_notice_list
 		
 	
