@@ -87,7 +87,7 @@ def createnotice(request):
 				notice_data = json_data['notice_data']
 			else:
 				notice_data = set_default_notice(district) 
-			context.update(notice_data)
+			context['notice_data'] = notice_data
 			context['heading'] = '创建新故事会通知'
 			return render(request, 'createnotice.html', context)
 		else:
@@ -116,6 +116,7 @@ def createnotice(request):
 
 			validate_result = validate_notice_data(notice_data)
 			if validate_result['err_num'] == 0:
+				this_activity = {}
 				for activity_no in range(1):
 					activity_name = 'activity-' + str(activity_no + 1)
 					activity_info = request.POST[activity_name + '-info']
@@ -161,7 +162,7 @@ def createnotice(request):
 		context['district_name'] = district
 		context['heading'] = '创建新故事会通知'
 		notice_data = set_default_notice(district)
-		context.update(notice_data)
+		context['notice_data'] = notice_data
 		return render(request, 'createnotice.html', context)
 
 
@@ -184,7 +185,11 @@ def set_default_notice(district):
 	default_notice['story_maxsize'] = '20' 
 	default_notice['story_site'] = places[district]
 	default_notice['story_address'] = addresses[district]
-
+	default_notice['activity_list'] = []
+	activity_1 = {}
+	activity_1['activity_name'] = 'activity_1'
+	activity_1['activity_info'] = '小朋友们自我介绍； 一起唱《你好歌》。'
+	activity_1['activity_img_url'] = ''
 	return default_notice
 
 def validate_notice_data(notice_data):
