@@ -70,7 +70,7 @@ def adminlogout(request):
 
 def createnotice(request):
 	context = {}
-	context['activity_list'] = ['activiy-1','activiy-2','activiy-3','activiy-4','activiy-5']
+	context['activity_list'] = ['activity_1','activity_2','activity_3','activity_4','activity_5']
 	json_data = {}
 	if not request.user.is_authenticated:
 		return redirect('/mtlstory/admin/')
