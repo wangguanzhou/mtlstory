@@ -87,6 +87,7 @@
                     <textarea class="form-control" name="{{ activity_name }}-info" rows="3" placeholder="{{ activity_info }}"></textarea>
                 </div>
             </div>
+            <div class="row">
                 <div class="col-xs-5 col-sm-4 col-md-3">
                 <label class="btn btn-default btn-file"><i class="glyphicon glyphicon-search"></i>
                     选择图片<input type="file" class="browse" name="{{ activity_name }}-img">
@@ -95,6 +96,7 @@
                 <div class="col-xs-7 col-sm-8 col-md-9">
                     <input type="text" class="form-control" placeholder="活动相关图片" value="{{ activity_img_url }}">
                 </div>
+            </div>
             <hr>
             {% endfor %}
            <div class="text-center">
