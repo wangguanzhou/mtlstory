@@ -179,8 +179,8 @@ def createnotice(request):
 
 def get_active_notice():
 	active_notice_list = []
-	for root, dirs, filename in os.walk(Noticefile_Path, topdown=True):
-		if os.path.splitext(filename)[1] == '.json':
+	for dirpath, dirname, filename in os.walk(Noticefile_Path, topdown=True):
+		if os.path.splitext(os.path.join(dirpath, filename))[1] == '.json':
 			try:
 				json_data = read_notice_file(filename)
 				if json_data['published']:
