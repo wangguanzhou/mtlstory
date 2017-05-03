@@ -180,11 +180,15 @@ def createnotice(request):
 def get_active_notice():
 	active_notice_list = []
 	for root, dirs, filename in os.walk(Noticefile_Path, topdown=True):
-		json_data = read_notice_file(filename)
-		if json_data['published']:
-			district = json_data['district']
-			story_date = json_data['notice_data']['story_date']
-			active_notice_list.append((district, story_date))
+		if os.path.splitext(filename)[1] == '.json':
+			try:
+				json_data = read_notice_file(filename)
+				if json_data['published']:
+					district = json_data['district']
+					story_date = json_data['notice_data']['story_date']
+					active_notice_list.append((district, story_date))
+			exception:
+				print('Error reading notice file')
 	return active_notice_list
 		
 	
