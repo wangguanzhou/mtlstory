@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from django.core.files.storage import FileSystemStorage
+import os
 import os.path
 from datetime import datetime
 import string
@@ -26,6 +27,10 @@ DistrictNames = {
 
 def homepage(request):
 	context = {}
+	active_notice_list = get_active_notice()
+	context['num_of_active_notices'] = len(active_notice_list)
+	ifcontext['num_of_active_notices'] > 0:
+		context['active_notice_list'] = active_notice_list
 	return render(request, 'homepage.html', context)
 
 
@@ -138,6 +143,7 @@ def createnotice(request):
 			if validate_result['err_num'] == 0:
 				context['succeeded'] = True
 				json_data['district'] = district
+				json_data['published'] = True
 				json_data['notice_data'] = notice_data
 				json_filename = district + '-' + notice_data['story_date'][:10] + '.json'				
 				save_notice_file(json_filename, json_data)
@@ -149,8 +155,9 @@ def createnotice(request):
 				context['temp_id'] = temp_id
 				context['succeeded'] = False
 				json_data['district'] = district
+				json_data['published'] = False
 				json_data['notice_data'] = notice_data
-				json_filename = temp_id + '.json'
+				json_filename = 'temp/' + temp_id + '.json'
 				save_notice_file(json_filename, json_data)
 
 				return render(request, 'createnotice_result.html', context)
@@ -170,7 +177,17 @@ def createnotice(request):
 		return render(request, 'createnotice.html', context)
 
 
-
+def get_active_notice():
+	active_notice_list = []
+	for root, dirs, filename in os.walk(Noticefile_Path, topdown=True):
+		json_data = read_notice_file(filename)
+		if json_data['published']:
+			district = json_data['district']
+			story_date = json_data['notice_data']['story_date']
+			active_notice_list.append((district, story_date))
+	return active_notice_list
+		
+	
 def set_default_notice(district):
 	places = {
 		'Brossard': 'Bibliothèque de Brossard (Brossard图书馆儿童活动区)',
