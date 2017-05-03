@@ -3,5 +3,25 @@
 
 {% block show-notice %}
 
+<div class="container" style="padding: 20px;">
+  <div class="row" style="">
+    <div class="col-xs-12 text-center" style="padding: 10px;">
+      <h3> {{ district }} 地区 {{ notice_data.story_date }} 故事会活动通知 </h3>
+    </div>
+    
+    <div class="col-xs-0 col-sm-0 col-md-2"></div>
+    <div class="col-xs-12 col-sm-12 col-md-8">
+      <div class="row">
+        <div class="col-xs-3 col-md-2">故事会主题：</div>
+        <div class="col-xs-9 col-md-10">{{ notice_data.story_theme }}</div>
+        
+        <div class="col-xs-3 col-md-2">活动日期-时间：</div>
+        <div class="col-xs-9 col-md-10">{{ notice_data.story_date }}， {{ notice_data.story_time }} </div>
+    
+      </div>
+    </div>
+    <div class="col-xs-0 col-sm-0 col-md-2"></div>
 
+  </div>
+</div>
 {% endblock %}
