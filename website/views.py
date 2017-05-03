@@ -187,18 +187,11 @@ def set_default_notice(district):
 	default_notice['story_address'] = addresses[district]
 	default_notice['activity_list'] = []
 
-	activity_tuple = ()
-	activity_tuple[0] = 'activity_1'	# activity_name
-	activity_tuple[1]= '小朋友们自我介绍； 一起唱《你好歌》。' #activity_info
-	activity_tuple[2] = '' 	# activity_img_url
-	default_notice['activity_list'].append(activity_tuple)
+	activity_1_tuple = ('activity_1', '小朋友们自我介绍； 一起唱《你好歌》。', '')
+	default_notice['activity_list'].append(activity_1_tuple)
 
 	for activity_name in ['activity_2', 'activity_3', 'activity_4', 'activity_5']:
-		activity_tuple = ()
-		activity_tuple[0] = activity_name # activity_name
-		activity_tuple[1]= '' #activity_info
-		activity_tuple[2] = '' 	# activity_img_url
-		default_notice['activity_list'].append(activity_tuple)
+		default_notice['activity_list'].append(activity_name, '', '')
 
 
 	return default_notice
