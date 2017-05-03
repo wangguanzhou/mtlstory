@@ -186,11 +186,11 @@ def set_default_notice(district):
 	default_notice['story_maxsize'] = '20' 
 	default_notice['story_site'] = places[district]
 	default_notice['story_address'] = addresses[district]
-	default_notice['activity-1'] = {}
-	default_notice['activity-1']['activity_info'] = '小朋友们自我介绍； 一起唱《你好歌》。'
-	default_notice['activity-1']['activity_img_url'] = ''
+	default_notice['activity_1'] = {}
+	default_notice['activity_1']['activity_info'] = '小朋友们自我介绍； 一起唱《你好歌》。'
+	default_notice['activity_1']['activity_img_url'] = ''
 
-	for activity_name in ['activity-2', 'activity-3', 'activity-4', 'activity-5']:
+	for activity_name in ['activity_2', 'activity_3', 'activity_4', 'activity_5']:
 		default_notice[activity_name] = {}
 		default_notice[activity_name]['activity_info'] = ''
 		default_notice[activity_name]['activity_img_url'] = ''
