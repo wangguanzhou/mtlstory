@@ -82,8 +82,8 @@ def createnotice(request):
 
 		if 'tempid' in request.GET:
 			temp_id = request.GET['tempid']
-			if os.path.isfile(Noticefile_Path + temp_id):
-				json_data = read_notice_file(temp_id)
+			if os.path.isfile(Noticefile_Path + temp_id + '.json'):
+				json_data = read_notice_file(temp_id + '.json')
 				notice_data = json_data['notice_data']
 			else:
 				notice_data = set_default_notice(district) 
@@ -103,27 +103,27 @@ def createnotice(request):
 
 		if 'publish-notice' in request.POST:
 			notice_data = {}
-			notice_data['story_theme'] = request.POST['story-theme']
-			notice_data['story_date'] = request.POST['story-date']
-			notice_data['story_time'] = request.POST['story-time']
-			notice_data['story_host'] = request.POST['story-host']
-			notice_data['story_maxsize'] = request.POST['story-maxsize']
-			notice_data['story_site'] = request.POST['story-site']
-			notice_data['story_address'] = request.POST['story-address']
-			notice_data['register_date'] = request.POST['register-date']
-			notice_data['register_time'] = request.POST['register-time']
+			notice_data['story_theme'] = request.POST['story_theme']
+			notice_data['story_date'] = request.POST['story_date']
+			notice_data['story_time'] = request.POST['story_time']
+			notice_data['story_host'] = request.POST['story_host']
+			notice_data['story_maxsize'] = request.POST['story_maxsize']
+			notice_data['story_site'] = request.POST['story_site']
+			notice_data['story_address'] = request.POST['story_address']
+			notice_data['register_date'] = request.POST['register_date']
+			notice_data['register_time'] = request.POST['register_time']
 			notice_data['activity_list'] = []
 
 			this_activity = {}
-			for activity_no in range(1):
-				activity_name = 'activity-' + str(activity_no + 1)
-				activity_info = request.POST[activity_name + '-info']
+			for activity_no in range(5):
+				activity_name = 'activity_' + str(activity_no + 1)
+				activity_info = request.POST[activity_name + '_info']
 				this_activity['activity_name'] = activity_name;
 				this_activity['activity_info'] = activity_info;
-				if (activity_name + '-img') in request.FILES:
+				if (activity_name + '_img') in request.FILES:
 					try:
-						activity_imgfile = request.FILES[activity_name + '-img']
-						activity_filename = request.POST['story-date'][:10] + '-' + activity_name
+						activity_imgfile = request.FILES[activity_name + '_img']
+						activity_filename = request.POST['story-date'][:10] + '_' + activity_name
 						this_activity['activity_img_url'] = upload_activity_img(filename, imgfile)
 					except:
 						this_activity['activity_img_url'] = ''
@@ -132,17 +132,21 @@ def createnotice(request):
 
 				notice_data['actility_list'].append(this_activity)
 
-				context['notice_data'] = notice_data
+			context['notice_data'] = notice_data
 
 			validate_result = validate_notice_data(notice_data)
 			if validate_result['err_num'] == 0:
 				context['succeeded'] = True
+				json_data['district'] = district
+				json_data['notice_data'] = notice_data
+				json_filename = district + '-' + notice_data['story_date'][:10] + '.json'				
+				save_notice_file(json_filename, json_data)
 				return render(request, 'createnotice_result.html', context)
 			else:
 				context['notice_data'] = notice_data
 				context['err_msgs'] = validate_result['err_msgs']
 				temp_id = district + '_' + create_random_chars(8)
-				context['temp_id'] = temp_id
+				context['temp_id'] = temp_id + '.json'
 				context['succeeded'] = False
 				json_data['district'] = district
 				json_data['notice_data'] = notice_data
