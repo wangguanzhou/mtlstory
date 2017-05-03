@@ -180,7 +180,7 @@ def createnotice(request):
 def get_active_notice():
 	active_notice_list = []
 	for dirpath, dirnames, filenames in os.walk(Noticefile_Path, topdown=True):
-		for file in filenames:
+		for filename in filenames:
 			if os.path.splitext(filename)[1] == '.json':
 				try:
 					json_data = read_notice_file(filename)
