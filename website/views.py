@@ -29,7 +29,7 @@ def homepage(request):
 	context = {}
 	active_notice_list = get_active_notice()
 	context['num_of_active_notices'] = len(active_notice_list)
-	ifcontext['num_of_active_notices'] > 0:
+	if context['num_of_active_notices'] > 0:
 		context['active_notice_list'] = active_notice_list
 	return render(request, 'homepage.html', context)
 
