@@ -217,8 +217,11 @@ def validate_notice_data(notice_data):
 			story_date_err = True
 			
 	if story_date_err:
-		err_num = err_num + 1
+		err_num += 1
 		err_msgs.append('故事会活动日期缺失或者格式错误。')
+	elif datetime.strptime(story_date[:10]).date() < datetime.today().date():
+		err_num += 1
+		err_msgs.append('故事会活动日期不能早于今天。')
 
 	register_date = notice_data['register_date']
 	register_date_err = False
@@ -231,10 +234,16 @@ def validate_notice_data(notice_data):
 			register_date_err = True
 			
 	if register_date_err:
-		err_num = err_num + 1
+		err_num += 1
 		err_msgs.append('报名启动日期缺失或者格式错误。')
+	elif datetime.strptime(register_date[:10]).date() < datetime.today().date():
+		err_num += 1
+		err_msgs.append('报名启动日期不能早于今天。')
 
-
+	if not story_date_err and not register_date_err:
+		if datetime.strptime(register_date[:10]).date() > datetime.strptime(story_date[:10]).date():
+			err_num += 1
+			err_msgs.append('报名启动日期不能晚于故事会活动日期。')
 
 	result['err_num'] = err_num
 	result['err_msgs'] = err_msgs
