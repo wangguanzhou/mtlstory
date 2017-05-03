@@ -70,7 +70,6 @@ def adminlogout(request):
 
 def createnotice(request):
 	context = {}
-	context['activity_list'] = ['activity_1','activity_2','activity_3','activity_4','activity_5']
 	json_data = {}
 	if not request.user.is_authenticated:
 		return redirect('/mtlstory/admin/')
@@ -186,14 +185,21 @@ def set_default_notice(district):
 	default_notice['story_maxsize'] = '20' 
 	default_notice['story_site'] = places[district]
 	default_notice['story_address'] = addresses[district]
-	default_notice['activity_1'] = {}
-	default_notice['activity_1']['activity_info'] = '小朋友们自我介绍； 一起唱《你好歌》。'
-	default_notice['activity_1']['activity_img_url'] = ''
+	default_notice['activity_list'] = []
+
+	activity_tuple = ()
+	activity_tuple[0] = 'activity_1'	# activity_name
+	activity_tuple[1]= '小朋友们自我介绍； 一起唱《你好歌》。' #activity_info
+	activity_tuple[2] = '' 	# activity_img_url
+	default_notice['activity_list'].append(activity_tuple)
 
 	for activity_name in ['activity_2', 'activity_3', 'activity_4', 'activity_5']:
-		default_notice[activity_name] = {}
-		default_notice[activity_name]['activity_info'] = ''
-		default_notice[activity_name]['activity_img_url'] = ''
+		activity_tuple = ()
+		activity_tuple[0] = activity_name # activity_name
+		activity_tuple[1]= '' #activity_info
+		activity_tuple[2] = '' 	# activity_img_url
+		default_notice['activity_list'].append(activity_tuple)
+
 
 	return default_notice
 
