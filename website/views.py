@@ -191,7 +191,7 @@ def set_default_notice(district):
 	default_notice['activity_list'].append(activity_1_tuple)
 
 	for activity_name in ['activity_2', 'activity_3', 'activity_4', 'activity_5']:
-		default_notice['activity_list'].append(activity_name, '', '')
+		default_notice['activity_list'].append((activity_name, '', ''))
 
 
 	return default_notice
