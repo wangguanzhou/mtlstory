@@ -130,7 +130,7 @@ def createnotice(request):
 				else:
 					this_activity['activity_img_url'] = ''
 
-				notice_data['actility_list'].append(this_activity)
+				notice_data['activity_list'].append(this_activity)
 
 			context['notice_data'] = notice_data
 
