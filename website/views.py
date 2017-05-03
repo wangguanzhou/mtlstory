@@ -187,7 +187,7 @@ def get_active_notice():
 					district = json_data['district']
 					story_date = json_data['notice_data']['story_date']
 					active_notice_list.append((district, story_date))
-			exception:
+			except:
 				print('Error reading notice file')
 	return active_notice_list
 		
