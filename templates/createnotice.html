@@ -81,13 +81,12 @@
             </div>
 
             {% for activity_name, activity_info, activity_img_url in notice_data.activity_list %}
-            <div class="col-xs-12 col-sm-12">
+            <div class="col-xs-12 col-sm-12" style="margin-top: 10px;">
                 <div class="form-group">
                     <label for="">故事会活动内容 {{ activity_name }}：</label>
                     <textarea class="form-control" name="{{ activity_name }}-info" rows="3" placeholder="{{ activity_info }}"></textarea>
                 </div>
             </div>
-            <div style="padding: 10px 0px 20px 0px;">
             <div class="form-group">
                 <div class="col-xs-5 col-sm-4 col-md-3">
                 <label class="btn btn-default btn-file"><i class="glyphicon glyphicon-search"></i>
@@ -97,7 +96,6 @@
                 <div class="col-xs-7 col-sm-8 col-md-9">
                     <input type="text" class="form-control" placeholder="活动相关图片" value="{{ activity_img_url }}">
                 </div>
-            </div>
             </div>
             {% endfor %}
            <div class="text-center">
