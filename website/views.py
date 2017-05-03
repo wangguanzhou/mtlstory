@@ -146,11 +146,11 @@ def createnotice(request):
 				context['notice_data'] = notice_data
 				context['err_msgs'] = validate_result['err_msgs']
 				temp_id = district + '_' + create_random_chars(8)
-				context['temp_id'] = temp_id + '.json'
+				context['temp_id'] = temp_id
 				context['succeeded'] = False
 				json_data['district'] = district
 				json_data['notice_data'] = notice_data
-				json_filename = temp_id
+				json_filename = temp_id + '.json'
 				save_notice_file(json_filename, json_data)
 
 				return render(request, 'createnotice_result.html', context)
