@@ -212,14 +212,14 @@ def validate_notice_data(notice_data):
 		story_date_err = True
 	else:
 		try:
-			datetime.strptime(story_date[:10], '%Y-%m-%d')
+			storyDate = datetime.strptime(story_date[:10], '%Y-%m-%d')
 		except:
 			story_date_err = True
 			
 	if story_date_err:
 		err_num += 1
 		err_msgs.append('故事会活动日期缺失或者格式错误。')
-	elif datetime.strptime(story_date[:10]).date() < datetime.today().date():
+	elif storyDate.date() < datetime.today().date():
 		err_num += 1
 		err_msgs.append('故事会活动日期不能早于今天。')
 
@@ -229,19 +229,19 @@ def validate_notice_data(notice_data):
 		register_date_err = True
 	else:
 		try:
-			datetime.strptime(register_date[:10], '%Y-%m-%d')
+			registerDate = datetime.strptime(register_date[:10], '%Y-%m-%d')
 		except:
 			register_date_err = True
 			
 	if register_date_err:
 		err_num += 1
 		err_msgs.append('报名启动日期缺失或者格式错误。')
-	elif datetime.strptime(register_date[:10]).date() < datetime.today().date():
+	elif registerDate.date() < datetime.today().date():
 		err_num += 1
 		err_msgs.append('报名启动日期不能早于今天。')
 
 	if not story_date_err and not register_date_err:
-		if datetime.strptime(register_date[:10]).date() > datetime.strptime(story_date[:10]).date():
+		if registerDate.date() > storyDate.date():
 			err_num += 1
 			err_msgs.append('报名启动日期不能晚于故事会活动日期。')
 
