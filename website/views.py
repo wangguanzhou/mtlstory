@@ -70,6 +70,7 @@ def adminlogout(request):
 
 def createnotice(request):
 	context = {}
+	context['activity_list'] = ['activiy-1','activiy-2','activiy-3','activiy-4','activiy-5']
 	json_data = {}
 	if not request.user.is_authenticated:
 		return redirect('/mtlstory/admin/')
@@ -114,28 +115,28 @@ def createnotice(request):
 			notice_data['register_time'] = request.POST['register-time']
 			notice_data['activity_list'] = []
 
-			validate_result = validate_notice_data(notice_data)
-			if validate_result['err_num'] == 0:
-				this_activity = {}
-				for activity_no in range(1):
-					activity_name = 'activity-' + str(activity_no + 1)
-					activity_info = request.POST[activity_name + '-info']
-					if len(activity_info) > 0:
-						this_activity['activity_name'] = activity_name;
-						this_activity['activity_info'] = activity_info;
-						if (activity_name + '-img') in request.FILES:
-							try:
-								activity_imgfile = request.FILES[activity_name + '-img']
-								activity_filename = request.POST['story-date'][:10] + '-' + activity_name
-								this_activity['activity_img_url'] = upload_activity_img(filename, imgfile)
-							except:
-								this_activity['activity_img_url'] = ''
-						else:
-								this_activity['activity_img_url'] = ''
+			this_activity = {}
+			for activity_no in range(1):
+				activity_name = 'activity-' + str(activity_no + 1)
+				activity_info = request.POST[activity_name + '-info']
+				this_activity['activity_name'] = activity_name;
+				this_activity['activity_info'] = activity_info;
+				if (activity_name + '-img') in request.FILES:
+					try:
+						activity_imgfile = request.FILES[activity_name + '-img']
+						activity_filename = request.POST['story-date'][:10] + '-' + activity_name
+						this_activity['activity_img_url'] = upload_activity_img(filename, imgfile)
+					except:
+						this_activity['activity_img_url'] = ''
+				else:
+					this_activity['activity_img_url'] = ''
 
-						notice_data['actility_list'].append(this_activity)
+				notice_data['actility_list'].append(this_activity)
 
 				context['notice_data'] = notice_data
+
+			validate_result = validate_notice_data(notice_data)
+			if validate_result['err_num'] == 0:
 				context['succeeded'] = True
 				return render(request, 'createnotice_result.html', context)
 			else:

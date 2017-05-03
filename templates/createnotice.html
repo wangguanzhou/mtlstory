@@ -79,22 +79,25 @@
                     <input type="text" class="form-control" name="register-time" id="register-timepicker" value="{{ notice_data.register_time }}">
                 </div>
             </div>
+
+            {% for activity_name in activilty_list %}
             <div class="col-xs-12 col-sm-12">
                 <div class="form-group">
-                    <label for="">故事会活动内容 1：</label>
-                    <textarea class="form-control" name="activity-1-info" rows="3" placeholder="{{ notice_data.activity_list.0.activity_info }}"></textarea>
+                    <label for="">故事会活动内容 {{ activity_name }}：</label>
+                    <textarea class="form-control" name="{{ activity_name }}-info" rows="3" placeholder="{{ notice_data.activity_list.0.activity_info }}"></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-xs-5 col-sm-4 col-md-3">
                 <label class="btn btn-default btn-file"><i class="glyphicon glyphicon-search"></i>
-                    选择图片<input type="file" class="browse" name="activity-1-img">
+                    选择图片<input type="file" class="browse" name="{{ activity_name }}-img">
                 </label>
                 </div>
                 <div class="col-xs-7 col-sm-8 col-md-9">
                     <input type="text" class="form-control" placeholder="活动相关图片" value="{{ notice_data.activity_list.0.activity_img_url }}">
                 </div>
             </div>
+            {% endfor %}
            <div class="text-center">
                 <input type="submit" name="publish-notice" class="btn btn-primary" value="发布新通知" style="margin-top:30px" />
             </div>
