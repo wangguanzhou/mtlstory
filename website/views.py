@@ -190,6 +190,8 @@ def set_default_notice(district):
 	activity_1['activity_name'] = 'activity_1'
 	activity_1['activity_info'] = '小朋友们自我介绍； 一起唱《你好歌》。'
 	activity_1['activity_img_url'] = ''
+	default_notice['activity_list'].append(activity_1)
+
 	return default_notice
 
 def validate_notice_data(notice_data):
