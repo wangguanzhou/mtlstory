@@ -240,8 +240,8 @@ def set_default_notice(district):
 	default_notice['activity_list'].append(activity_1_tuple)
 
 	for activity_no in [2, 3, 4, 5]:
-		activity_name = 'activity_' + str(activity_no + 1)
-		activity_name_cn = '故事会活动-' + str(activity_no + 1)
+		activity_name = 'activity_' + str(activity_no)
+		activity_name_cn = '故事会活动-' + str(activity_no)
 		activity_info = ''
 		activity_img_url = ''
 		default_notice['activity_list'].append((activity_name, activity_name_cn, activity_info, activity_img_url))
