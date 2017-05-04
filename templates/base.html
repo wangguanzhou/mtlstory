@@ -33,6 +33,11 @@
           $('#story-timepicker').timepicker();
           $('#register-timepicker').timepicker();
 
+          setInterval(regCountDown, 1000);
+          function regCountDown() {
+            var now = new Date();
+            $('#countdown-info').text(now); 
+          };
       });
 
       $(document).on('change', '.browse', function() {
