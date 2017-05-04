@@ -16,6 +16,7 @@ Noticefile_Path = '/opt/webapps/mtlstory/mtlstory/noticefiles/'
 ErrMsgs = {
 	'admin-not-logged-in': '您尚未登录。请先以管理员身份登录。',
 	'admin-login-error': '用户名或者密码错误，请重新尝试登录。',
+	'notice-file-not-exist': '该活动通知不存在。',
 }
 
 DistrictNames = {
@@ -176,6 +177,30 @@ def createnotice(request):
 		context['notice_data'] = notice_data
 		return render(request, 'createnotice.html', context)
 
+def shownotice(request):
+	context = {}
+	context['shownotice_error'] = False
+
+	if request.GET:
+		district = request.GET['district']
+		story_date = request.GET['story_date']
+		notice_filename = district + '-' + story_date + '.json'
+
+		if os.path.isfile(Noticefile_Path + notice_filename):
+			context['district'] = district
+			try:
+				json_data = read_notice_file(notice_filename)
+				context['notice_data'] = json_data['notice_data']
+			except:
+				print('Error reading notice file ' + notice_filename)
+		else:
+			context['shownotice_error'] = True
+			context['err_msgs'] = []
+			context['err_msgs'].append(ErrMsgs['notice-file-not-exist'])
+
+		return render(request, 'shownotice.html', context)
+	else:
+		return redirect('/mtlstory/')
 
 def get_active_notice():
 	active_notice_list = []
