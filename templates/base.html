@@ -39,7 +39,15 @@
             var regDate = '{{notice_data.register_date}}'.substring(0, 10);
             var regTime = new Date( regDate + ' ' + '{{notice_data.register_time}}');
             var timeLeft = Date.parse(regTime) - Date.parse(now);
-            $('#countdown-info').text(timeLeft); 
+            if (timeLeft <= 0) {
+              $('#countdown-info').text('本次活动报名已启动，请点击右边按钮报名。');
+              $('#regButton').prop('disabled', false);
+            }
+            else {
+              $('#countdown-info').text(timeLeft);
+              
+            }
+            
           };
       });
 
