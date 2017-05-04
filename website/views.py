@@ -120,23 +120,21 @@ def createnotice(request):
 			notice_data['register_time'] = request.POST['register_time']
 			notice_data['activity_list'] = []
 
-			this_activity = {}
 			for activity_no in range(5):
 				activity_name = 'activity_' + str(activity_no + 1)
+				activity_name_cn = '故事会活动-' + str(activity_no + 1)
 				activity_info = request.POST[activity_name + '_info']
-				this_activity['activity_name'] = activity_name;
-				this_activity['activity_info'] = activity_info;
 				if (activity_name + '_img') in request.FILES:
 					try:
 						activity_imgfile = request.FILES[activity_name + '_img']
 						activity_filename = request.POST['story-date'][:10] + '_' + activity_name
-						this_activity['activity_img_url'] = upload_activity_img(filename, imgfile)
+						activity_img_url = upload_activity_img(filename, imgfile)
 					except:
-						this_activity['activity_img_url'] = ''
+						activity_img_url = ''
 				else:
-					this_activity['activity_img_url'] = ''
+					activity_img_url = ''
 
-				notice_data['activity_list'].append(this_activity)
+				notice_data['activity_list'].append((activity_name, activity_name_cn, activity_info, activity_img_url))
 
 			context['notice_data'] = notice_data
 
@@ -238,13 +236,16 @@ def set_default_notice(district):
 	default_notice['story_address'] = addresses[district]
 	default_notice['activity_list'] = []
 
-	activity_1_tuple = ('activity_1', '小朋友们自我介绍； 一起唱《你好歌》。', '')
+	activity_1_tuple = ('activity_1', '故事会活动-1', '小朋友们自我介绍； 一起唱《你好歌》。', '')
 	default_notice['activity_list'].append(activity_1_tuple)
 
-	for activity_name in ['activity_2', 'activity_3', 'activity_4', 'activity_5']:
-		default_notice['activity_list'].append((activity_name, '', ''))
-
-
+	for activity_no in [2, 3, 4, 5]:
+		activity_name = 'activity_' + str(activity_no + 1)
+		activity_name_cn = '故事会活动-' + str(activity_no + 1)
+		activity_info = ''
+		activity_img_url = ''
+		default_notice['activity_list'].append((activity_name, activity_name_cn, activity_info, activity_img_url))
+		
 	return default_notice
 
 def validate_notice_data(notice_data):
