@@ -53,9 +53,9 @@
         <div class="col-xs-8 col-md-9">{{ notice_data.story_host }} </div>
       </div>
 
-      {% for activity in notice_data.activity_list %}
+      {% for activity_name, activity_name_cn, activity_info, activity_img_url in notice_data.activity_list %}
       <div class="row">
-        <div class="col-xs-4 col-md-3">{{ activity.activity_name }}：</div>
+        <div class="col-xs-4 col-md-3">{{ activity_name_cn }}：</div>
         <div class="col-xs-8 col-md-9">{{ activity.activity_info }} </div>
       </div>
       {% endfor %}
