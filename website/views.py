@@ -211,7 +211,7 @@ def get_active_notice():
 					json_data = read_notice_file(filename)
 					if json_data['published']:
 						district = json_data['district']
-						story_date = json_data['notice_data']['story_date']
+						story_date = json_data['notice_data']['story_date'][:10]
 						active_notice_list.append((district, story_date))
 				except:
 					print('Error reading notice file')
