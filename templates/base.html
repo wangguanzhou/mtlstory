@@ -36,7 +36,9 @@
           setInterval(regCountDown, 1000);
           function regCountDown() {
             var now = new Date();
-            $('#countdown-info').text(now); 
+            var regTime = new Date({{notice_data.register_date}} + ' ' + {{noticedata.register_time}});
+            var timeLeft = Date.parse(regTime) - Date.parse(now);
+            $('#countdown-info').text(timeLeft); 
           };
       });
 
