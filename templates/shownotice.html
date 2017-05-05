@@ -13,12 +13,37 @@
                 <form class="form" id="registerForm" method="POST">
                     {% csrf_token %}
                     <div class="row">
-                        <div class="form-group col-xs-12 col-sm-12">
-                            <label class="control-label julius-font" for="">家长名:</label>
+                        <div class="form-group col-xs-6 col-sm-6">
+                            <label class="control-label" for="">家长名:</label>
                             <input name="parent_name" type="text" class="form-control"></input>
-                        </div>                        
+                        </div>                
+                        <div class="form-group col-xs-6 col-sm-6">
+                            <label class="control-label" for="">儿童人数:</label>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>   
                     </div>
-                    
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-12">
+                            <label class="control-label" for="">儿童1昵称:</label>
+                            <input name="child_1_name" type="text" class="form-control"></input>
+                        </div>  
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-12">
+                            <label class="control-label" for="">儿童2昵称:</label>
+                            <input name="child_2_name" type="text" class="form-control"></input>
+                        </div>  
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-12">
+                            <label class="control-label" for="">儿童3昵称:</label>
+                            <input name="child_3_name" type="text" class="form-control"></input>
+                        </div>  
+                    </div>
                 </form>
             </div>
             <div class="modal-footer text-center">
