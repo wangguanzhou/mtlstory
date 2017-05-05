@@ -239,7 +239,7 @@ def set_default_notice(district):
 	default_notice['story_address'] = addresses[district]
 	default_notice['activity_list'] = []
 
-	activity_1_tuple = ('activity_1', '故事会活动-1', '小朋友们自我介绍； 一起唱《你好歌》。', '')
+	activity_1_tuple = ('activity_1', '故事会活动-1', '小朋友们自我介绍； 一起唱《你好歌》。', False, '')
 	default_notice['activity_list'].append(activity_1_tuple)
 
 	for activity_no in [2, 3, 4, 5]:
