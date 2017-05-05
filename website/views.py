@@ -205,6 +205,9 @@ def shownotice(request):
 	else:
 		return redirect('/mtlstory/')
 
+def register(request):
+	return(redirect('/'))
+
 def get_active_notice():
 	active_notice_list = []
 	for dirpath, dirnames, filenames in os.walk(Noticefile_Path, topdown=True):
