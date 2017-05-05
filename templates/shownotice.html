@@ -13,7 +13,7 @@
                 <form class="form" id="registerForm" action="/mtlstory/register/" method="GET">
                     {% csrf_token %}
                     <div class="row">
-                        <input name="notice_info" type="hidden" value=">{{district}}-{{notice_data.story_date}}"</input>
+                        <input name="notice_info" type="hidden" value="{{district}}-{{story_date}}"</input>
                     </div>
                     <div class="row">
                         <div class="form-group col-xs-6 col-sm-6">
@@ -73,7 +73,7 @@
   {% else %}
   <div class="row" style="">
     <div class="col-xs-12 text-center" style="padding: 10px;">
-      <h3> {{ district }} 地区 {{ notice_data.story_date }} 故事会活动通知 </h3>
+      <h3> {{ district }} 地区 {{ story_date }} 故事会活动通知 </h3>
     </div>
     
     <div class="col-xs-0 col-sm-0 col-md-2"></div>
