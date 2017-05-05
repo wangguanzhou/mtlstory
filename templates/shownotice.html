@@ -10,7 +10,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form class="form" id="registerForm" action="/mtlstory/register/" method="GET">
+                <form class="form" id="registerForm" action="/mtlstory/register/" method="POST">
                     {% csrf_token %}
                     <div class="row">
                         <input class="hidden" value=">{{district}}-{{notice_data.story_date}}"</input>
@@ -48,8 +48,7 @@
                         </div>  
                     </div>
                     <div class="modal-footer text-center">
-                        <input name="register_btn" type="submit" class="btn btn-primary" data-dismiss="modal"></input>
-                    </div>
+                        <input name="register_btn" type="submit" class="btn btn-primary" data-dismiss="modal" />
                 </form>
             </div>
             
