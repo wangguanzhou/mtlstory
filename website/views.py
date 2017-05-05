@@ -88,7 +88,7 @@ def createnotice(request):
 
 		if 'tempid' in request.GET:
 			temp_id = request.GET['tempid']
-			if os.path.isfile(Noticefile_Path + temp_id + '.json'):
+			if os.path.isfile(Noticefile_Path + 'temp/' + temp_id + '.json'):
 				json_data = read_notice_file(temp_id + '.json')
 				notice_data = json_data['notice_data']
 			else:
