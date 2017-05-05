@@ -190,6 +190,7 @@ def shownotice(request):
 
 		if os.path.isfile(Noticefile_Path + notice_filename):
 			context['district'] = district
+			context['story_date'] = story_date
 			try:
 				json_data = read_notice_file(notice_filename)
 				context['notice_data'] = json_data['notice_data']
