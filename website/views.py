@@ -127,10 +127,11 @@ def createnotice(request):
 				if (activity_name + '_img') in request.FILES:
 					try:
 						activity_imgfile = request.FILES[activity_name + '_img']
-						activity_filename = request.POST['story-date'][:10] + '_' + activity_name
-						activity_img_url = upload_activity_img(filename, imgfile)
+						activity_filename = district + '-' + request.POST['story-date'][:10] + '_' + activity_name
+						activity_img_url = upload_activity_img(activity_filename, activity_imgfile)
 						activity_img_exist = True
 					except:
+						print('Error uploading image files.')
 						activity_img_exist = False
 						activity_img_url = ''
 				else:
