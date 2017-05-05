@@ -129,12 +129,15 @@ def createnotice(request):
 						activity_imgfile = request.FILES[activity_name + '_img']
 						activity_filename = request.POST['story-date'][:10] + '_' + activity_name
 						activity_img_url = upload_activity_img(filename, imgfile)
+						activity_img_exist = True
 					except:
+						activity_img_exist = False
 						activity_img_url = ''
 				else:
 					activity_img_url = ''
+					activity_img_exist = False
 
-				notice_data['activity_list'].append((activity_name, activity_name_cn, activity_info, activity_img_url))
+				notice_data['activity_list'].append((activity_name, activity_name_cn, activity_info, activity_img_exist, activity_img_url))
 
 			context['notice_data'] = notice_data
 
@@ -243,8 +246,9 @@ def set_default_notice(district):
 		activity_name = 'activity_' + str(activity_no)
 		activity_name_cn = '故事会活动-' + str(activity_no)
 		activity_info = ''
+		activity_img_exist = False
 		activity_img_url = ''
-		default_notice['activity_list'].append((activity_name, activity_name_cn, activity_info, activity_img_url))
+		default_notice['activity_list'].append((activity_name, activity_name_cn, activity_info, activity_img_exist, activity_img_url))
 		
 	return default_notice
 
