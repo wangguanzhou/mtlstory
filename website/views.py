@@ -108,6 +108,9 @@ def createnotice(request):
 		context['district_name'] = district
 
 		if 'publish-notice' in request.POST:
+			register_data = {}
+			register_data['current_size'] = 0
+			register_data['registration_list'] = []
 			notice_data = {}
 			notice_data['story_theme'] = request.POST['story_theme']
 			notice_data['story_date'] = request.POST['story_date']
@@ -148,6 +151,7 @@ def createnotice(request):
 				json_data['district'] = district
 				json_data['published'] = True
 				json_data['notice_data'] = notice_data
+				json_data['register_data'] = register_data
 				json_filename = district + '-' + notice_data['story_date'][:10] + '.json'				
 				save_notice_file(json_filename, json_data)
 				return render(request, 'createnotice_result.html', context)
@@ -206,7 +210,48 @@ def shownotice(request):
 		return redirect('/mtlstory/')
 
 def register(request):
-	return(redirect('/'))
+	context = {}
+	if request.POST:
+		if 'register_btn' in request.POST:
+			try:
+				district = request.POST['district']
+				story_date = request.POST['story_date']
+				parent_name = request.POST['parent_name']
+				num_of_children = request.POST['num_of_children']
+				child_1_name = request.POST['child_1_name']
+				child_2_name = request.POST['child_2_name']
+				child_3_name = request.POST['child_3_name']
+
+				notice_file = district + '-' + story_date + '.json'
+				if os.path.isfile(Noticefile_Path + notice_file):
+					json_data = read_notice_file(notice_file)
+				max_size = json_data['notice_data']['story_maxsize']
+				current_size = json_data['register_data']['current_size']
+				if current_size >= max_size:
+					context['register_succeeded'] = False
+					context['register_fail_cause'] = 'oversize'
+				else:
+					json_data['register_data']['current_size'] += num_of_children
+					json_data['register_data']['registration_list'].append((parent_name, num_of_children, child_1_name, child_2_name, child_3_name))
+					save_notice_file(notice_file, json_data)
+
+					context['register_succeeded'] = True
+					context['parent_name'] = parent_name
+					context['num_of_children'] = num_of_children
+					context['child_1_name'] = child_1_name
+					context['child_2_name'] = child_1_name
+					context['child_1_name'] = child_1_name
+					
+			except:
+				context['register_succeeded'] = False
+				context['register_fail_cause'] = 'unknown'
+	else:
+		context['register_succeeded'] = False
+		context['register_fail_cause'] = 'unknown'
+
+	return render(request, 'register_result.html', context)
+
+
 
 def get_active_notice():
 	active_notice_list = []
