@@ -259,8 +259,8 @@ def register(request):
 					context['parent_name'] = parent_name
 					context['num_of_children'] = num_of_children
 					context['child_1_name'] = child_1_name
-					context['child_2_name'] = child_1_name
-					context['child_1_name'] = child_1_name
+					context['child_2_name'] = child_2_name
+					context['child_3_name'] = child_3_name
 					context['max_size'] = max_size
 					context['current_size'] = new_current_size
 			except:
