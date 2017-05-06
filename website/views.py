@@ -229,7 +229,7 @@ def register(request):
 				current_size = json_data['register_data']['current_size']
 				if current_size >= max_size:
 					context['register_succeeded'] = False
-					context['register_fail_cause'] = 'oversize'
+					context['register_errmsg'] = '当前报名人数已经超过限额。'
 				else:
 					json_data['register_data']['current_size'] += num_of_children
 					json_data['register_data']['registration_list'].append((parent_name, num_of_children, child_1_name, child_2_name, child_3_name))
@@ -241,13 +241,15 @@ def register(request):
 					context['child_1_name'] = child_1_name
 					context['child_2_name'] = child_1_name
 					context['child_1_name'] = child_1_name
+					context['max_size'] = max_size
+					context['current_size'] = current_size
 					
 			except:
 				context['register_succeeded'] = False
-				context['register_fail_cause'] = 'unknown'
+				context['register_errmsg'] = '失败原因未知。'
 	else:
 		context['register_succeeded'] = False
-		context['register_fail_cause'] = 'unknown'
+		context['register_errmsg'] = '失败原因未知。'
 
 	return render(request, 'register_result.html', context)
 
