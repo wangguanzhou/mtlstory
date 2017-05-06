@@ -213,37 +213,41 @@ def register(request):
 	context = {}
 	if request.POST:
 		if 'register_btn' in request.POST:
-			print('register_btn is clicked')
-			district = request.POST['district']
-			story_date = request.POST['story_date']
-			parent_name = request.POST['parent_name']
-			num_of_children = request.POST['num_of_children']
-			child_1_name = request.POST['child_1_name']
-			child_2_name = request.POST['child_2_name']
-			child_3_name = request.POST['child_3_name']
+			try:
+				district = request.POST['district']
+				story_date = request.POST['story_date']
+				parent_name = request.POST['parent_name']
+				num_of_children = request.POST['num_of_children']
+				child_1_name = request.POST['child_1_name']
+				child_2_name = request.POST['child_2_name']
+				child_3_name = request.POST['child_3_name']
 
-			notice_file = district + '-' + story_date + '.json'
-			if os.path.isfile(Noticefile_Path + notice_file):
-				json_data = read_notice_file(notice_file)
-			max_size = json_data['notice_data']['story_maxsize']
-			current_size = json_data['register_data']['current_size']
-			if current_size >= int(max_size):
-				context['parent_name'] = parent_name
+				notice_file = district + '-' + story_date + '.json'
+				if os.path.isfile(Noticefile_Path + notice_file):
+					json_data = read_notice_file(notice_file)
+				max_size = json_data['notice_data']['story_maxsize']
+				current_size = json_data['register_data']['current_size']
+				if current_size >= int(max_size):
+					context['parent_name'] = parent_name
+					context['register_succeeded'] = False
+					context['register_errmsg'] = '当前报名人数已经超过限额。'
+				else:
+					new_current_size = current_size + int(num_of_children)
+					json_data['register_data']['current_size'] = new_current_size
+					json_data['register_data']['registration_list'].append((parent_name, num_of_children, child_1_name, child_2_name, child_3_name))
+					save_notice_file(notice_file, json_data)
+
+					context['register_succeeded'] = True
+					context['parent_name'] = parent_name
+					context['num_of_children'] = num_of_children
+					context['child_1_name'] = child_1_name
+					context['child_2_name'] = child_1_name
+					context['child_1_name'] = child_1_name
+					context['max_size'] = max_size
+					context['current_size'] = current_size
+			except:
 				context['register_succeeded'] = False
-				context['register_errmsg'] = '当前报名人数已经超过限额。'
-			else:
-				json_data['register_data']['current_size'] = current_size + int(num_of_children)
-				json_data['register_data']['registration_list'].append((parent_name, num_of_children, child_1_name, child_2_name, child_3_name))
-				save_notice_file(notice_file, json_data)
-
-				context['register_succeeded'] = True
-				context['parent_name'] = parent_name
-				context['num_of_children'] = num_of_children
-				context['child_1_name'] = child_1_name
-				context['child_2_name'] = child_1_name
-				context['child_1_name'] = child_1_name
-				context['max_size'] = max_size
-				context['current_size'] = current_size
+				context['register_errmsg'] = '失败原因未知1。'
 					
 	else:
 		context['register_succeeded'] = False
