@@ -228,6 +228,7 @@ def register(request):
 				max_size = json_data['notice_data']['story_maxsize']
 				current_size = json_data['register_data']['current_size']
 				if current_size >= max_size:
+					context['parent_name'] = parent_name
 					context['register_succeeded'] = False
 					context['register_errmsg'] = '当前报名人数已经超过限额。'
 				else:
@@ -246,10 +247,10 @@ def register(request):
 					
 			except:
 				context['register_succeeded'] = False
-				context['register_errmsg'] = '失败原因未知。'
+				context['register_errmsg'] = '失败原因未知1。'
 	else:
 		context['register_succeeded'] = False
-		context['register_errmsg'] = '失败原因未知。'
+		context['register_errmsg'] = '失败原因未知2。'
 
 	return render(request, 'register_result.html', context)
 
