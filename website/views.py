@@ -232,7 +232,7 @@ def register(request):
 				context['register_succeeded'] = False
 				context['register_errmsg'] = '当前报名人数已经超过限额。'
 			else:
-				json_data['register_data']['current_size'] += num_of_children
+				json_data['register_data']['current_size'] = current_size + num_of_children
 				json_data['register_data']['registration_list'].append((parent_name, num_of_children, child_1_name, child_2_name, child_3_name))
 				save_notice_file(notice_file, json_data)
 
