@@ -197,7 +197,25 @@ def shownotice(request):
 			context['story_date'] = story_date
 			try:
 				json_data = read_notice_file(notice_filename)
-				context['notice_data'] = json_data['notice_data']
+				notice_data = json_data['notice_data']
+				register_data = json_data['register_data']
+				context['notice_data'] = notice_data 
+				context['register_data'] = register_data 
+
+				story_time = datetime.strptime(notice_data['story_date'][:10] + ' ' + notice_data['story_time'], '%Y-%m-%d %I:%M %p')
+				current_time = datetime.now()
+				if current_time >= story_time:
+					context['overtime'] = True
+				else:
+					context['overtime'] = False
+				
+				current_size = register_data['current_size']	
+				max_size = int(notice_data['story_maxsize'])
+				if current_size >= max_size:
+					context['oversize'] = True
+				else:
+					context['oversize'] = False
+
 			except:
 				print('Error reading notice file ' + notice_filename)
 		else:

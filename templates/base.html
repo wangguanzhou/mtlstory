@@ -33,7 +33,9 @@
           $('#story-timepicker').timepicker();
           $('#register-timepicker').timepicker();
 
-          setInterval(regCountDown, 1000);
+          if(!{{overtime}} && !{{oversize}}
+            IntervalId = setInterval(regCountDown, 1000);
+
           function regCountDown() {
             var now = new Date();
             var regDate = '{{notice_data.register_date}}'.substring(0, 10);

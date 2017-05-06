@@ -80,9 +80,16 @@
     <div class="col-xs-0 col-sm-0 col-md-2"></div>
     <div class="col-xs-12 col-sm-12 col-md-8" >
       <div class="row" style="padding: 10px; background-color: cyan; margin-bottom:10px;">
-        <p>为控制活动人数，我们只接受已报名者参加本次活动。报名启动时间为{{notice_data.register_date}} {{notice_data.register_time }}。</p>
-        <p id="countdown-info"></p>
-        <div class="text-center" style="margin-top: 5px"><button class="btn btn-primary" id="regButton" data-toggle="modal" data-target="#registerModal">我要报名</button></div>
+          {% if overtime %}
+            <p>本次活动报名已经结束。</p>
+          {% elif oversize %}
+          {% else %}
+            <p>为控制活动人数，我们只接受已报名者参加本次活动。报名启动时间为{{notice_data.register_date}} {{notice_data.register_time }}。</p>
+            <p id="countdown-info"></p>
+            <div class="text-center" style="margin-top: 5px">
+                <button class="btn btn-primary" id="regButton" data-toggle="modal" data-target="#registerModal">我要报名</button>
+            </div>
+          {% endif %}
       </div>
       <div class="row" style="padding: 5px; font-size: 1.2em;">
         <div class="col-xs-4 col-md-3">故事会主题：</div>
