@@ -285,7 +285,8 @@ def get_active_notice():
 					if json_data['published']:
 						district = json_data['district']
 						story_date = json_data['notice_data']['story_date'][:10]
-						active_notice_list.append((district, story_date))
+						if datetime.strptime(story_date, '%Y-%m-%d').date() > datetime.today().date():
+							active_notice_list.append((district, story_date))
 				except:
 					print('Error reading notice file')
 	return active_notice_list
