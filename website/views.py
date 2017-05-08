@@ -28,10 +28,15 @@ DistrictNames = {
 
 def homepage(request):
 	context = {}
-	active_notice_list = get_active_notice()
+	active_notice_list = get_notice('active')
+	history_notice_list = get_notice('history')
 	context['num_of_active_notices'] = len(active_notice_list)
+	context['num_of_hisotry_notices'] = len(history_notice_list)
 	if context['num_of_active_notices'] > 0:
 		context['active_notice_list'] = active_notice_list
+	if context['num_of_history_notices'] > 0:
+		context['history_notice_list'] = hisotry_notice_list
+	
 	return render(request, 'homepage.html', context)
 
 
@@ -275,8 +280,9 @@ def register(request):
 
 
 
-def get_active_notice():
+def get_notice(flag):
 	active_notice_list = []
+	history_notice_list = []
 	for dirpath, dirnames, filenames in os.walk(Noticefile_Path, topdown=True):
 		for filename in filenames:
 			if os.path.splitext(filename)[1] == '.json':
@@ -287,9 +293,14 @@ def get_active_notice():
 						story_date = json_data['notice_data']['story_date'][:10]
 						if datetime.strptime(story_date, '%Y-%m-%d').date() > datetime.today().date():
 							active_notice_list.append((district, story_date))
+						else:
+							history_notice_list.append((district, story_date))
 				except:
 					print('Error reading notice file')
-	return active_notice_list
+	if flag == 'active':
+		return active_notice_list
+	elif flag == 'history':
+		return history_notice_list
 		
 	
 def set_default_notice(district):
