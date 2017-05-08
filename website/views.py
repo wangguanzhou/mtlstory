@@ -31,7 +31,7 @@ def homepage(request):
 	active_notice_list = get_notice('active')
 	history_notice_list = get_notice('history')
 	context['num_of_active_notices'] = len(active_notice_list)
-	context['num_of_hisotry_notices'] = len(history_notice_list)
+	context['num_of_history_notices'] = len(history_notice_list)
 	if context['num_of_active_notices'] > 0:
 		context['active_notice_list'] = active_notice_list
 	if context['num_of_history_notices'] > 0:
