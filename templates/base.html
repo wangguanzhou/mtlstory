@@ -116,21 +116,26 @@
       
     }
 
+		.image-with-text {
+			position: relative;
+		}
+
+		.text-over-image {
+			position: absolute;
+			top: 75%;
+			left: 0;
+			width: 100%;
+			color: white;
+		}
+
   </style>
   </head>
 
 <body>
 <div class="container bg-1 text-center" style="padding: 20px">
-  <div class="row">
-    <div class="col-xs-1 col-sm-2 col-md-4"></div>
-    <div class="col-xs-3 col-sm-3 col-md-1">
-      <img class="img-responsive pull-right" src="{% static '/images/mtlstory-logo.png' %}"></img>
-    </div>
-    <div class="col-xs-7 col-sm-5 col-md-3">
-      <a href="/mtlstory" style="color:#fff"><h3 style="float: left;">蒙城中文故事会</h3></a>
-    </div>
-    <div class="col-xs-1 col-sm-2 col-md-4"></div>
-  </div>
+	<div class="row">
+		<a href="/mtlstory" style="color:#fff"><h3>蒙城中文故事会</h3></a>
+	</div>
 </div>
 
   {% block home-content %}
