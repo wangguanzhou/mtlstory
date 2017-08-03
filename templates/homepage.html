@@ -4,58 +4,58 @@
 {% block home-content %}
 
 <div class="container">
-<div class="row">
-		<div class="col-md-6" style="padding: 0px;">
-        <div class="bg-2" style="padding: 5px 20px 5px 20px;">
-            <h4>最新活动通告</h4>
-        </div>
-        <div style="padding: 10px 20px 10px 20px">
-            {% if num_of_active_notices == 0 %}
-            <h5>当前没有新的故事会活动通知</h5>
-            {% else %}
-            {% for district, story_date in active_notice_list %}
-            <a href="/mtlstory/shownotice?district={{district}}&story_date={{story_date}}"><h5>[{{ district }}] - {{ story_date }} 故事会活动通知</h5></a>
-            {% endfor %}
-            {% endif %}
-        </div>
-        <div style="padding: 10px 20px 10px 20px">
-            <a href="#"><h5>>> 查看历史活动通知</h5></a>
-        </div>
+  <div class="row">
+    <div class="col-md-6" style="padding: 5px 0px 0px 0px;">
+      <div class="bg-2" style="padding: 5px 20px 5px 20px;">
+        <h4>最新活动通告</h4>
+      </div>
+      <div style="padding: 10px 20px 10px 20px">
+        {% if num_of_active_notices == 0 %}
+        <h5>当前没有新的故事会活动通知</h5>
+        {% else %}
+        {% for district, story_date in active_notice_list %}
+        <a href="/mtlstory/shownotice?district={{district}}&story_date={{story_date}}"><h5>[{{ district }}] - {{ story_date }} 故事会活动通知</h5></a>
+        {% endfor %}
+        {% endif %}
+      </div>
+      <div style="padding: 10px 20px 10px 20px">
+        <a href="#"><h5>>> 查看历史活动通知</h5></a>
+      </div>
 
     </div> <!-- col-md-6 -->
 
-    <div class="col-md-6" style="padding: 0px;">
-			<div class="image-with-text text-center">
-				<img class="img-responsive" width="100%" src="{% static 'images/brossard-03-28-01.JPG' %}" alt="">
-				<div class="text-over-image">
-					<h4>[ click the image to see more photos ... ]</h4>
-				</div>
-			</div>
+    <div class="col-md-6" style="padding: 5px 0px 5px 5px;">
+      <div class="image-with-text text-center">
+        <img class="img-responsive" width="100%" src="{% static 'images/brossard-03-28-01.JPG' %}" alt="">
+        <div class="text-over-image">
+          <h4>[ click the image to see more photos ... ]</h4>
+        </div>
+      </div>
 
     </div> <!-- col-md-6 -->
 
-</div> <!-- row -->
+  </div> <!-- row -->
 
-<div class="row bg-2" style="">
+  <div class="row bg-2" style="">
     <div class="col-xs-12 col-md-4" style="padding: 30px;">
-        <div class="text-center bg-0" style="height: 200px; padding: 20px; ">
-            <h3>Contact Us</h3>
-            <p>alsj lasdjf lkja slkdfjalksdl lkjasdkfj lajdklf alsdj laksdj f</p>
-        </div>
+      <div class="text-center bg-0" style="height: 200px; padding: 20px; ">
+        <h3>Contact Us</h3>
+        <p>alsj lasdjf lkja slkdfjalksdl lkjasdkfj lajdklf alsdj laksdj f</p>
+      </div>
     </div>
     <div class="col-xs-12 col-md-4" style="padding: 30px;">
-        <div class="text-center bg-0" style="height: 200px; padding: 20px; ">
-            <h3>Volunteer</h3>
-            <p>aljd lakj alskdjf laj alsdjf alsdj alsdkfj alsdk lasjp2urqow 0293 rqowur </p>
-        </div>
+      <div class="text-center bg-0" style="height: 200px; padding: 20px; ">
+        <h3>Volunteer</h3>
+        <p>aljd lakj alskdjf laj alsdjf alsdj alsdkfj alsdk lasjp2urqow 0293 rqowur </p>
+      </div>
     </div>
     <div class="col-xs-12 col-md-4" style="padding: 30px;">
-        <div class="text-center bg-0" style="height: 200px; padding: 20px; ">
-            <h3>Reserved</h3>
-            <p>aljd lakj alskdjf laj alsdjf alsdj alsdkfj alsdk lasjp2urqow 0293 rqowur </p>
-        </div>
+      <div class="text-center bg-0" style="height: 200px; padding: 20px; ">
+        <h3>Reserved</h3>
+        <p>aljd lakj alskdjf laj alsdjf alsdj alsdkfj alsdk lasjp2urqow 0293 rqowur </p>
+      </div>
     </div>
-</div>
+  </div>
 </div> <!-- container -->
 
 

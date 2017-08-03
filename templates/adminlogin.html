@@ -4,48 +4,48 @@
 {% block admin-login %}
 
 <div class="container" style="padding:20px;">
-    <div class="row" style="padding: 10px 0px;">
+  <div class="row" style="padding: 10px 0px;">
     <div class="col-xs-1 cols-sm-3 col-md-3"></div>
     <div class="col-xs-10 cols-sm-6 col-md-6">
-        <div class="text-center">
-            <h3> {{ heading }} </h3>
-        </div>
+      <div class="text-center">
+        <h3> {{ heading }} </h3>
+      </div>
 
-        {% if authenticated %}
-        <div class="alert alert-success">
-            您已经以管理员 <strong> {{ username }}</strong> 登录。
-        </div>
-        <a href="/mtlstory/createnotice"><h4>创建新的故事会通告</h4></a>
-        <a href="#"><h4>更改或删除当前故事会通告</h4></a>
-        <a href="#"><h4>查看当前及历史报名信息</h4></a>
-        <a href="/mtlstory/logout"><h4>退出登录</h4></a>
+      {% if authenticated %}
+      <div class="alert alert-success">
+        您已经以管理员 <strong> {{ username }}</strong> 登录。
+      </div>
+      <a href="/mtlstory/createnotice"><h4>创建新的故事会通告</h4></a>
+      <a href="#"><h4>更改或删除当前故事会通告</h4></a>
+      <a href="#"><h4>查看当前及历史报名信息</h4></a>
+      <a href="/mtlstory/logout"><h4>退出登录</h4></a>
 
-        {% else %}
-        {% if login_error %}
-        <div class="alert alert-warning">
-            <strong>Warning!</strong> {{ errmsg }}
-        </div>
-        {% endif %}
+      {% else %}
+      {% if login_error %}
+      <div class="alert alert-warning">
+        <strong>Warning!</strong> {{ errmsg }}
+      </div>
+      {% endif %}
 
-        <form class="form" id="admin-login" method="POST">
+      <form class="form" id="admin-login" method="POST">
         {% csrf_token %}
-            <div class="form-group">
-                <label for="">用户名：</label>
-                <input type="text" class="form-control" name="admin-name">
-            </div>
-            <div class="form-group">
-                <label for="">密码：</label>
-                <input type="password" class="form-control" name="admin-pwd">
-            </div>
-            <div class="text-center">
-                <button type="submit" name="login-btn" class="btn btn-primary">登  录</button>
-            </div>
-        </form>
+        <div class="form-group">
+          <label for="">用户名：</label>
+          <input type="text" class="form-control" name="admin-name">
+        </div>
+        <div class="form-group">
+          <label for="">密码：</label>
+          <input type="password" class="form-control" name="admin-pwd">
+        </div>
+        <div class="text-center">
+          <button type="submit" name="login-btn" class="btn btn-primary">登  录</button>
+        </div>
+      </form>
 
-        {% endif %}
+      {% endif %}
     </div>
     <div class="col-xs-1 cols-sm-3 col-md-3"></div>
-    </div> <!-- row -->
+  </div> <!-- row -->
 
 </div>
 

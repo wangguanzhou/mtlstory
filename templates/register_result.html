@@ -4,29 +4,29 @@
 {% block register-result %}
 
 <div class="container" style="padding: 20px;">
-    <div class="row" style="padding: 10px 0px;">
-        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
-        <div class="col-xs-12 cols-sm-8 col-md-8">
-            {% if register_succeeded %}
-            <div class="text-center">
-                <h3>亲爱的{{parent_name}}，您已经成功报名本期故事会。</h3>
-            </div>
-            <p>您已经为{{num_of_children}}名儿童（{{child_1_name}} {{child_2_name}} {{child_3_name}}）报名。</p>
-            <p>本期活动儿童限额{{max_size}}名，现在共有{{current_size}}名儿童报名。</p>
+  <div class="row" style="padding: 10px 0px;">
+    <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+    <div class="col-xs-12 cols-sm-8 col-md-8">
+      {% if register_succeeded %}
+      <div class="text-center">
+        <h3>亲爱的{{parent_name}}，您已经成功报名本期故事会。</h3>
+      </div>
+      <p>您已经为{{num_of_children}}名儿童（{{child_1_name}} {{child_2_name}} {{child_3_name}}）报名。</p>
+      <p>本期活动儿童限额{{max_size}}名，现在共有{{current_size}}名儿童报名。</p>
 
-            {% else %}
-            <div class="text-center">
-                <h3>亲爱的{{parent_name}}，很遗憾您未能报名成功。</h3>
-            </div>
-            <p>{{register_errmsg}}</p>
+      {% else %}
+      <div class="text-center">
+        <h3>亲爱的{{parent_name}}，很遗憾您未能报名成功。</h3>
+      </div>
+      <p>{{register_errmsg}}</p>
 
-            {% endif %}
-            <div class="text-center">
-                <a href="/mtlstory/"><button class="btn btn-primary">返回主页</button></a>
-            </div>
-        </div>
-        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+      {% endif %}
+      <div class="text-center">
+        <a href="/mtlstory/"><button class="btn btn-primary">返回主页</button></a>
+      </div>
     </div>
+    <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+  </div>
 </div>
 
 {% endblock %}

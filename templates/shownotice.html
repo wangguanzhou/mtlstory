@@ -4,58 +4,58 @@
 {% block show-notice %}
 
 <div class="modal" id="registerModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form class="form" id="registerForm" action="/mtlstory/register/" method="POST">
-                   {% csrf_token %}
-                    <div class="row">
-                        <input name="district" type="hidden" value="{{district}}"</input>
-                        <input name="story_date" type="hidden" value="{{story_date}}"</input>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-xs-6 col-sm-6">
-                            <label class="control-label" for="">家长名:</label>
-                            <input name="parent_name" type="text" class="form-control"></input>
-                        </div>                
-                        <div class="form-group col-xs-6 col-sm-6">
-                            <label class="control-label" for="">儿童人数:</label>
-                            <select name="num_of_children" class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                        </div>   
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-xs-12 col-sm-12">
-                            <label class="control-label" for="">儿童1昵称:</label>
-                            <input name="child_1_name" type="text" class="form-control"></input>
-                        </div>  
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-xs-12 col-sm-12">
-                            <label class="control-label" for="">儿童2昵称:</label>
-                            <input name="child_2_name" type="text" class="form-control"></input>
-                        </div>  
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-xs-12 col-sm-12">
-                            <label class="control-label" for="">儿童3昵称:</label>
-                            <input name="child_3_name" type="text" class="form-control"></input>
-                        </div>  
-                    </div>
-                    <div class="modal-footer text-center">
-                        <input name="register_btn" type="submit" class="btn btn-primary">
-                    </div>
-                </form>
-            </div>
-            
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form class="form" id="registerForm" action="/mtlstory/register/" method="POST">
+          {% csrf_token %}
+          <div class="row">
+            <input name="district" type="hidden" value="{{district}}"</input>
+            <input name="story_date" type="hidden" value="{{story_date}}"</input>
+          </div>
+          <div class="row">
+            <div class="form-group col-xs-6 col-sm-6">
+              <label class="control-label" for="">家长名:</label>
+              <input name="parent_name" type="text" class="form-control"></input>
+            </div>                
+            <div class="form-group col-xs-6 col-sm-6">
+              <label class="control-label" for="">儿童人数:</label>
+              <select name="num_of_children" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
+            </div>   
+          </div>
+          <div class="row">
+            <div class="form-group col-xs-12 col-sm-12">
+              <label class="control-label" for="">儿童1昵称:</label>
+              <input name="child_1_name" type="text" class="form-control"></input>
+            </div>  
+          </div>
+          <div class="row">
+            <div class="form-group col-xs-12 col-sm-12">
+              <label class="control-label" for="">儿童2昵称:</label>
+              <input name="child_2_name" type="text" class="form-control"></input>
+            </div>  
+          </div>
+          <div class="row">
+            <div class="form-group col-xs-12 col-sm-12">
+              <label class="control-label" for="">儿童3昵称:</label>
+              <input name="child_3_name" type="text" class="form-control"></input>
+            </div>  
+          </div>
+          <div class="modal-footer text-center">
+            <input name="register_btn" type="submit" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+
     </div>
+  </div>
 </div>
 
 
@@ -64,84 +64,84 @@
   <div class="row" style="padding: 10px 0px;">
     <div class="col-xs-1 cols-sm-3 col-md-3"></div>
     <div class="col-xs-10 cols-sm-6 col-md-6">
-        <div class="alert alert-warning">
-          {% for errmsg in err_msgs %}
-          <p><strong>Warning!</strong> {{ errmsg }}</p>
-          {% endfor %}
-        </div>
+      <div class="alert alert-warning">
+        {% for errmsg in err_msgs %}
+        <p><strong>Warning!</strong> {{ errmsg }}</p>
+        {% endfor %}
+      </div>
     </div>
     <div class="col-xs-1 cols-sm-3 col-md-3"></div>
-  {% else %}
-  <div class="row" style="">
-    <div class="col-xs-12 text-center" style="padding: 10px;">
-      <h3> {{ district }} 地区 {{ story_date }} 故事会活动通知 </h3>
-    </div>
-    
-    <div class="col-xs-0 col-sm-0 col-md-2"></div>
-    <div class="col-xs-12 col-sm-12 col-md-8" >
-      <div class="row text-center" style="padding: 10px; background-color: cyan; margin-bottom:10px;">
-        <p>为控制活动人数，我们只接受已报名者参加本次活动。</p>
+    {% else %}
+    <div class="row" style="">
+      <div class="col-xs-12 text-center" style="padding: 10px;">
+        <h3> {{ district }} 地区 {{ story_date }} 故事会活动通知 </h3>
+      </div>
+
+      <div class="col-xs-0 col-sm-0 col-md-2"></div>
+      <div class="col-xs-12 col-sm-12 col-md-8" >
+        <div class="row text-center" style="padding: 10px; background-color: cyan; margin-bottom:10px;">
+          <p>为控制活动人数，我们只接受已报名者参加本次活动。</p>
           {% if overtime %}
-            <p>本次活动报名已经结束。</p>
+          <p>本次活动报名已经结束。</p>
           {% elif oversize %}
-            <p>报名人数已超过本次活动限额{{notice_data.story_maxsize}}名。不再接受新的报名。</p>
+          <p>报名人数已超过本次活动限额{{notice_data.story_maxsize}}名。不再接受新的报名。</p>
           {% else %}
-            <p>报名启动时间为{{notice_data.register_date}} {{notice_data.register_time }}。</p>
-            <p id="countdown-info"></p>
-            <div class="text-center" style="margin-top: 5px">
-                <button class="btn btn-primary" id="regButton" disabled="true" data-toggle="modal" data-target="#registerModal">我要报名</button>
-            </div>
+          <p>报名启动时间为{{notice_data.register_date}} {{notice_data.register_time }}。</p>
+          <p id="countdown-info"></p>
+          <div class="text-center" style="margin-top: 5px">
+            <button class="btn btn-primary" id="regButton" disabled="true" data-toggle="modal" data-target="#registerModal">我要报名</button>
+          </div>
           {% endif %}
-      </div>
-      <div class="row" style="padding: 5px; font-size: 1.2em;">
-        <div class="col-xs-4 col-md-3">故事会主题：</div>
-        <div class="col-xs-8 col-md-9">{{ notice_data.story_theme }}</div>
-      </div>
-        
-      <div class="row" style="padding: 5px; font-size: 1.2em;">
-        <div class="col-xs-4 col-md-3">故事会日期：</div>
-        <div class="col-xs-8 col-md-9">{{ notice_data.story_date }}</div>
-      </div>
+        </div>
+        <div class="row" style="padding: 5px; font-size: 1.2em;">
+          <div class="col-xs-4 col-md-3">故事会主题：</div>
+          <div class="col-xs-8 col-md-9">{{ notice_data.story_theme }}</div>
+        </div>
 
-      <div class="row" style="padding: 5px; font-size: 1.2em;">
-        <div class="col-xs-4 col-md-3">故事会时间：</div>
-        <div class="col-xs-8 col-md-9">{{ notice_data.story_time }} </div>
-      </div>
+        <div class="row" style="padding: 5px; font-size: 1.2em;">
+          <div class="col-xs-4 col-md-3">故事会日期：</div>
+          <div class="col-xs-8 col-md-9">{{ notice_data.story_date }}</div>
+        </div>
 
-      <div class="row" style="padding: 5px; font-size: 1.2em;">
-        <div class="col-xs-4 col-md-3">故事会地点：</div>
-        <div class="col-xs-8 col-md-9">{{ notice_data.story_site }} </div>
-      </div>
+        <div class="row" style="padding: 5px; font-size: 1.2em;">
+          <div class="col-xs-4 col-md-3">故事会时间：</div>
+          <div class="col-xs-8 col-md-9">{{ notice_data.story_time }} </div>
+        </div>
 
-      <div class="row" style="padding: 5px; font-size: 1.2em;">
-        <div class="col-xs-4 col-md-3">故事会地址：</div>
-        <div class="col-xs-8 col-md-9">{{ notice_data.story_address }} </div>
-      </div>
+        <div class="row" style="padding: 5px; font-size: 1.2em;">
+          <div class="col-xs-4 col-md-3">故事会地点：</div>
+          <div class="col-xs-8 col-md-9">{{ notice_data.story_site }} </div>
+        </div>
 
-      <div class="row" style="padding: 5px; font-size: 1.2em;">
-        <div class="col-xs-4 col-md-3">主持人：</div>
-        <div class="col-xs-8 col-md-9">{{ notice_data.story_host }} </div>
-      </div>
+        <div class="row" style="padding: 5px; font-size: 1.2em;">
+          <div class="col-xs-4 col-md-3">故事会地址：</div>
+          <div class="col-xs-8 col-md-9">{{ notice_data.story_address }} </div>
+        </div>
 
-      {% for activity in notice_data.activity_list %}
-      <div class="row" style="padding: 5px; font-size: 1.2em;">
-        <div class="col-xs-4 col-md-3">{{ activity.1 }}：</div>
-        <div class="col-xs-8 col-md-9">{{ activity.2 }} </div>
+        <div class="row" style="padding: 5px; font-size: 1.2em;">
+          <div class="col-xs-4 col-md-3">主持人：</div>
+          <div class="col-xs-8 col-md-9">{{ notice_data.story_host }} </div>
+        </div>
+
+        {% for activity in notice_data.activity_list %}
+        <div class="row" style="padding: 5px; font-size: 1.2em;">
+          <div class="col-xs-4 col-md-3">{{ activity.1 }}：</div>
+          <div class="col-xs-8 col-md-9">{{ activity.2 }} </div>
+        </div>
+        {% if activity.3 %}
+        <div class="row" style="padding: 5px; font-size: 1.2em;">
+          <div class="col-xs-4 col-md-3"></div>
+          <div class="col-xs-8 col-md-6"><img class="img-responsive" src="{{activity.4}}"></div>
+          <div class="col-xs-0 col-md-3"></div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
       </div>
-      {% if activity.3 %}
-      <div class="row" style="padding: 5px; font-size: 1.2em;">
-        <div class="col-xs-4 col-md-3"></div>
-        <div class="col-xs-8 col-md-6"><img class="img-responsive" src="{{activity.4}}"></div>
-        <div class="col-xs-0 col-md-3"></div>
-      </div>
-      {% endif %}
-      {% endfor %}
-      
+      <div class="col-xs-0 col-sm-0 col-md-2"></div>
+
     </div>
-    <div class="col-xs-0 col-sm-0 col-md-2"></div>
 
+    {% endif %}
   </div>
-
-  {% endif %}
-</div>
-{% endblock %}
+  {% endblock %}

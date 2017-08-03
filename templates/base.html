@@ -10,57 +10,57 @@
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Questrial|Julius+Sans+One" rel="stylesheet">
-    <link href="{% static 'css/bootstrap-datepicker.standalone.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-datepicker.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap-timepicker.css' %}" rel="stylesheet">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
     <script src="{% static 'js/bootstrap-timepicker.js' %}"></script>
     <script type="text/javascript">
-      $(document).ready(function () {
-          $('#story-datepicker').datepicker({
-              format: "yyyy-mm-dd DD",
-              todayHighlight: true
-          });
-          $('#register-datepicker').datepicker({
-              format: "yyyy-mm-dd DD",
-              todayHighlight: true
-          });
+$(document).ready(function () {
+  $('#story-datepicker').datepicker({
+    format: "yyyy-mm-dd DD",
+    todayHighlight: true
+  });
+  $('#register-datepicker').datepicker({
+    format: "yyyy-mm-dd DD",
+    todayHighlight: true
+  });
 
-          $('#story-timepicker').timepicker();
-          $('#register-timepicker').timepicker();
+  $('#story-timepicker').timepicker();
+  $('#register-timepicker').timepicker();
 
-          //if(!{{overtime}} && !{{oversize}}
-          IntervalId = setInterval(regCountDown, 1000);
+  //if(!{{overtime}} && !{{oversize}}
+  IntervalId = setInterval(regCountDown, 1000);
 
-          function regCountDown() {
-            var now = new Date();
-            var regDate = '{{notice_data.register_date}}'.substring(0, 10);
-            var regTime = new Date( regDate + ' ' + '{{notice_data.register_time}}');
-            var timeLeft = Date.parse(regTime) / 1000 - Date.parse(now) / 1000;
-            var days = Math.floor(timeLeft / 86400); 
-			      var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-			      var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
-			      var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
-            
-            if (timeLeft <= 0) {
-              $('#countdown-info').text('本次活动报名已启动，请点击右边按钮报名。');
-              $('#regButton').prop('disabled', false);
-            }
-            else {
-              $('#countdown-info').html("距离报名启动时间还剩　<span>"+ days + "</span> 天 <span>" + hours + "</span> 小时 <span>" + minutes + "</span> 分钟 <span>" + seconds + "</span> 秒");
-              $('#regButton').prop('disabled', true);
-            }
-            
-          };
-      });
+  function regCountDown() {
+    var now = new Date();
+    var regDate = '{{notice_data.register_date}}'.substring(0, 10);
+    var regTime = new Date( regDate + ' ' + '{{notice_data.register_time}}');
+    var timeLeft = Date.parse(regTime) / 1000 - Date.parse(now) / 1000;
+    var days = Math.floor(timeLeft / 86400); 
+    var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+    var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+    var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
 
-      $(document).on('change', '.browse', function() {
-        $(this).parent().parent().parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
-      })
+    if (timeLeft <= 0) {
+      $('#countdown-info').text('本次活动报名已启动，请点击右边按钮报名。');
+      $('#regButton').prop('disabled', false);
+    }
+    else {
+      $('#countdown-info').html("距离报名启动时间还剩　<span>"+ days + "</span> 天 <span>" + hours + "</span> 小时 <span>" + minutes + "</span> 分钟 <span>" + seconds + "</span> 秒");
+      $('#regButton').prop('disabled', true);
+    }
+
+  };
+});
+
+$(document).on('change', '.browse', function() {
+  $(this).parent().parent().parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+})
     </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,9 +69,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-    body {
-      font-family: 'Questrial', sans-serif;
-    }
+body {
+  font-family: 'Questrial', sans-serif;
+}
 
     .no-padding {
       padding: 0 0 0 0；
@@ -97,67 +97,67 @@
       overflow: hidden;
     }
     .btn-file input[type=file] {
-        position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 100%;
-        min-height: 100%;
-        font-size: 100px;
-        text-align: right;
-        filter: alpha(opacity=0);
-        opacity: 0;
-        outline: none;
-        background: white;
-        cursor: inherit;
-        display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      outline: none;
+      background: white;
+      cursor: inherit;
+      display: block;
     }
 
     .browse {
-      
+
     }
 
-		.image-with-text {
-			position: relative;
-		}
+    .image-with-text {
+      position: relative;
+    }
 
-		.text-over-image {
-			position: absolute;
-			top: 75%;
-			left: 0;
-			width: 100%;
-			color: white;
-		}
+    .text-over-image {
+      position: absolute;
+      top: 75%;
+      left: 0;
+      width: 100%;
+      color: white;
+    }
 
-  </style>
+    </style>
   </head>
 
-<body>
-<div class="container bg-1 text-center" style="padding: 20px">
-	<div class="row">
-		<a href="/mtlstory" style="color:#fff"><h3>蒙城中文故事会</h3></a>
-	</div>
-</div>
+  <body>
+    <div class="container bg-1 text-center" style="padding: 20px">
+      <div class="row">
+        <a href="/mtlstory" style="color:#fff"><h3>蒙城中文故事会</h3></a>
+      </div>
+    </div>
 
-  {% block home-content %}
-  {% endblock %}
+    {% block home-content %}
+    {% endblock %}
 
-  {% block admin-login %}
-  {% endblock %}
+    {% block admin-login %}
+    {% endblock %}
 
-  {% block create-notice %}
-  {% endblock %}
+    {% block create-notice %}
+    {% endblock %}
 
-  {% block create-notice-result %}
-  {% endblock %}
+    {% block create-notice-result %}
+    {% endblock %}
 
-  {% block show-notice %}
-  {% endblock %}
-  
-  {% block register-result %}
-  {% endblock %}
+    {% block show-notice %}
+    {% endblock %}
 
-  <div class="container bg-2 text-center footer" style="padding:10px 0px 5px 0px;">
-    <p>&copy; 2017 6677ba 友情制作  <a href="/mtlstory/admin/">Admin Login</a> </p>
-  </div>
-</body>
+    {% block register-result %}
+    {% endblock %}
+
+    <div class="container bg-2 text-center footer" style="padding:20px 0px 5px 0px;">
+      <p>&copy; 2017 6677ba 友情制作  <a href="/mtlstory/admin/">Admin Login</a> </p>
+    </div>
+  </body>
 </html>

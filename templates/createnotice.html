@@ -4,109 +4,109 @@
 {% block create-notice %}
 
 <div class="container" style="padding: 20px;">
-    <div class="row" style="padding: 10px 0px;">
-        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
-        <div class="col-xs-12 cols-sm-8 col-md-8">
-            <a href="/mtlstory/admin/" <h4>管理员功能 >></h4></a>
-        </div>
-        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
-    </div>
-
-    <div class="row" style="padding: 10px 0px;">
+  <div class="row" style="padding: 10px 0px;">
     <div class="col-xs-0 cols-sm-2 col-md-2"></div>
     <div class="col-xs-12 cols-sm-8 col-md-8">
-        <div class="text-center">
-            <h3> {{ heading }} </h3>
-        </div>
-
-        {% if authenticated %}
-        <div class="alert alert-success">
-            您已经以管理员 <strong> {{ username }}</strong> 登录。
-        </div>
-        <form class="form" method="post" action="/mtlstory/createnotice/" id="create-notice-form" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="col-xs-12 col-sm-12">
-                <div class="form-group">
-                    <label for="">故事会主题：</label>
-                    <input type="text" class="form-control" name="story_theme" value="{{ notice_data.story_theme }}">
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6">
-                <div class="form-group">
-                    <label for="">故事会日期：</label>
-                    <input type="text" class="form-control" name="story_date" id="story-datepicker" value="{{ notice_data.story_date }}">
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6">
-                <div class="form-group">
-                    <label for="">故事会时间：</label>
-                    <input type="text" class="form-control" name="story_time" id="story-timepicker" value="{{ notice_data.story_time }}">
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6">
-                <div class="form-group">
-                    <label for="">主持人：</label>
-                    <input type="text" class="form-control" name="story_host" value="{{ notice_data.story_host }}">
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6">
-                <div class="form-group">
-                    <label for="">最大参与人数：</label>
-                    <input type="text" class="form-control" name="story_maxsize" value="{{ notice_data.story_maxsize }}">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12">
-                <div class="form-group">
-                    <label for="">故事会地点：</label>
-                    <input type="text" class="form-control" name="story_site" value="{{ notice_data.story_site }}">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12">
-                <div class="form-group">
-                    <label for="">详细地址：</label>
-                    <input type="text" class="form-control" name="story_address" value="{{ notice_data.story_address }}">
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6">
-                <div class="form-group">
-                    <label for="">报名启动日期：</label>
-                    <input type="text" class="form-control" name="register_date" id="register-datepicker" value="{{ notice_data.register_date }}">
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6">
-                <div class="form-group">
-                    <label for="">报名启动时间：</label>
-                    <input type="text" class="form-control" name="register_time" id="register-timepicker" value="{{ notice_data.register_time }}">
-                </div>
-            </div>
-
-            {% for activity_name, activity_name_cn, activity_info, activity_img_exist, activity_img_url in notice_data.activity_list %}
-            <div class="col-xs-12 col-sm-12">
-                <div class="form-group">
-                    <label for="">{{ activity_name_cn }}：</label>
-                    <textarea class="form-control" name="{{ activity_name }}_info" rows="3">{{ activity_info }}</textarea>
-                </div>
-            </div>
-            <div class="row" style="padding: 15px;">
-                <div class="col-xs-5 col-sm-4 col-md-3">
-                <label class="btn btn-default btn-file"><i class="glyphicon glyphicon-search"></i>
-                    选择图片<input type="file" class="browse" name="{{ activity_name }}_img">
-                </label>
-                </div>
-                <div class="col-xs-7 col-sm-8 col-md-9">
-                    <input type="text" class="form-control" placeholder="活动相关图片" value="{{ activity_img_url }}">
-                </div>
-            </div>
-            {% endfor %}
-           <div class="text-center">
-                <input type="submit" name="publish-notice" class="btn btn-primary" value="发布新通知" style="margin-top:30px" />
-            </div>
-        </form>
-
-        {% endif %} 
+      <a href="/mtlstory/admin/" <h4>管理员功能 >></h4></a>
     </div>
     <div class="col-xs-0 cols-sm-2 col-md-2"></div>
-    </div> <!-- row -->
+  </div>
+
+  <div class="row" style="padding: 10px 0px;">
+    <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+    <div class="col-xs-12 cols-sm-8 col-md-8">
+      <div class="text-center">
+        <h3> {{ heading }} </h3>
+      </div>
+
+      {% if authenticated %}
+      <div class="alert alert-success">
+        您已经以管理员 <strong> {{ username }}</strong> 登录。
+      </div>
+      <form class="form" method="post" action="/mtlstory/createnotice/" id="create-notice-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-xs-12 col-sm-12">
+          <div class="form-group">
+            <label for="">故事会主题：</label>
+            <input type="text" class="form-control" name="story_theme" value="{{ notice_data.story_theme }}">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          <div class="form-group">
+            <label for="">故事会日期：</label>
+            <input type="text" class="form-control" name="story_date" id="story-datepicker" value="{{ notice_data.story_date }}">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          <div class="form-group">
+            <label for="">故事会时间：</label>
+            <input type="text" class="form-control" name="story_time" id="story-timepicker" value="{{ notice_data.story_time }}">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          <div class="form-group">
+            <label for="">主持人：</label>
+            <input type="text" class="form-control" name="story_host" value="{{ notice_data.story_host }}">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          <div class="form-group">
+            <label for="">最大参与人数：</label>
+            <input type="text" class="form-control" name="story_maxsize" value="{{ notice_data.story_maxsize }}">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+          <div class="form-group">
+            <label for="">故事会地点：</label>
+            <input type="text" class="form-control" name="story_site" value="{{ notice_data.story_site }}">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+          <div class="form-group">
+            <label for="">详细地址：</label>
+            <input type="text" class="form-control" name="story_address" value="{{ notice_data.story_address }}">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          <div class="form-group">
+            <label for="">报名启动日期：</label>
+            <input type="text" class="form-control" name="register_date" id="register-datepicker" value="{{ notice_data.register_date }}">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          <div class="form-group">
+            <label for="">报名启动时间：</label>
+            <input type="text" class="form-control" name="register_time" id="register-timepicker" value="{{ notice_data.register_time }}">
+          </div>
+        </div>
+
+        {% for activity_name, activity_name_cn, activity_info, activity_img_exist, activity_img_url in notice_data.activity_list %}
+        <div class="col-xs-12 col-sm-12">
+          <div class="form-group">
+            <label for="">{{ activity_name_cn }}：</label>
+            <textarea class="form-control" name="{{ activity_name }}_info" rows="3">{{ activity_info }}</textarea>
+          </div>
+        </div>
+        <div class="row" style="padding: 15px;">
+          <div class="col-xs-5 col-sm-4 col-md-3">
+            <label class="btn btn-default btn-file"><i class="glyphicon glyphicon-search"></i>
+              选择图片<input type="file" class="browse" name="{{ activity_name }}_img">
+            </label>
+          </div>
+          <div class="col-xs-7 col-sm-8 col-md-9">
+            <input type="text" class="form-control" placeholder="活动相关图片" value="{{ activity_img_url }}">
+          </div>
+        </div>
+        {% endfor %}
+        <div class="text-center">
+          <input type="submit" name="publish-notice" class="btn btn-primary" value="发布新通知" style="margin-top:30px" />
+        </div>
+      </form>
+
+      {% endif %} 
+    </div>
+    <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+  </div> <!-- row -->
 </div> <!-- container -->  
 
 {% endblock %}

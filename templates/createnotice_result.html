@@ -4,41 +4,41 @@
 {% block create-notice-result %}
 
 <div class="container" style="padding: 20px;">
-    <div class="row" style="padding: 10px 0px;">
-        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
-        <div class="col-xs-12 cols-sm-8 col-md-8">
-            <a href="/mtlstory/admin/" <h4>管理员功能 >></h4></a>
-        </div>
-        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+  <div class="row" style="padding: 10px 0px;">
+    <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+    <div class="col-xs-12 cols-sm-8 col-md-8">
+      <a href="/mtlstory/admin/" <h4>管理员功能 >></h4></a>
     </div>
-    <div class="row" style="padding: 10px 0px;">
-        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
-        <div class="col-xs-12 cols-sm-8 col-md-8">
-            {% if succeeded %}
-            <div class="alert alert-success">
-                您已经成功创建 <strong>[ {{ district_name }} ]</strong> 地区 <strong>{{ notice_data.story_date }}</strong> 故事会通知。
-            </div>
+    <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+  </div>
+  <div class="row" style="padding: 10px 0px;">
+    <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+    <div class="col-xs-12 cols-sm-8 col-md-8">
+      {% if succeeded %}
+      <div class="alert alert-success">
+        您已经成功创建 <strong>[ {{ district_name }} ]</strong> 地区 <strong>{{ notice_data.story_date }}</strong> 故事会通知。
+      </div>
 
-            {% else %}
-            <div class="alert alert-warning">
-                <p>您创建的<strong>[ {{ district_name }} ]</strong> 地区 <strong>{{ notice_data.story_date }}</strong> 故事会通知中有如下错误，请重新修改。</p>
-                <div style="padding: 20px 0px 20px 0px;">
-                <ol>
-                    {% for err_msg in err_msgs %}
-                    <li> {{ err_msg }} </li>
-                    {% endfor %}
-                </ol>
-                </div>
-                <div class="text-center">
-                    <a href="/mtlstory/createnotice/?tempid={{ temp_id }}"><button class="btn btn-default">返回修改</button></a>
-                </div>
-            </div>
-
-            {% endif %}
-
+      {% else %}
+      <div class="alert alert-warning">
+        <p>您创建的<strong>[ {{ district_name }} ]</strong> 地区 <strong>{{ notice_data.story_date }}</strong> 故事会通知中有如下错误，请重新修改。</p>
+        <div style="padding: 20px 0px 20px 0px;">
+          <ol>
+            {% for err_msg in err_msgs %}
+            <li> {{ err_msg }} </li>
+            {% endfor %}
+          </ol>
         </div>
-        <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+        <div class="text-center">
+          <a href="/mtlstory/createnotice/?tempid={{ temp_id }}"><button class="btn btn-default">返回修改</button></a>
+        </div>
+      </div>
+
+      {% endif %}
+
     </div>
+    <div class="col-xs-0 cols-sm-2 col-md-2"></div>
+  </div>
 </div> <!-- container -->
 
 {% endblock %}
